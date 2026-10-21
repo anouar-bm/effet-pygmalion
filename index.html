@@ -11,16 +11,19 @@
 :root{
   --bg:#faf7f2; --surface:#ffffff; --ink:#1f2328; --muted:#5b6370; --line:#e6dfd3;
   --cog:#2f6fb3; --cog-soft:#e3eefa; --aff:#c2553a; --aff-soft:#fbe7e0; --acc:#2e8b6e; --acc-soft:#dff2ea;
+  --s-exp:#c2553a; --s-ctl:#2f6fb3; --grid:#ece6dc;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#15171b; --surface:#1d2026; --ink:#e9e6e1; --muted:#a3a9b3; --line:#2f333b;
     --cog:#7fb0e6; --cog-soft:#1f2c3b; --aff:#ec8a6f; --aff-soft:#3a2520; --acc:#6cc9a6; --acc-soft:#1c3129;
+    --s-exp:#d9694f; --s-ctl:#4f8fe0; --grid:#2a2e35;
   }
 }
 :root[data-theme="dark"]{
   --bg:#15171b; --surface:#1d2026; --ink:#e9e6e1; --muted:#a3a9b3; --line:#2f333b;
   --cog:#7fb0e6; --cog-soft:#1f2c3b; --aff:#ec8a6f; --aff-soft:#3a2520; --acc:#6cc9a6; --acc-soft:#1c3129;
+  --s-exp:#d9694f; --s-ctl:#4f8fe0; --grid:#2a2e35;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -77,6 +80,21 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
 .theme-btn:focus-visible{outline:2px solid var(--cog);outline-offset:2px}
 .theme-btn .i-sun,.theme-btn.is-dark .i-moon{display:none}
 .theme-btn.is-dark .i-sun{display:block}
+.split{display:grid;gap:24px;grid-template-columns:minmax(0,1fr) 280px;align-items:start}
+@media (max-width:720px){.split{grid-template-columns:1fr}}
+.painting{padding:10px}
+.painting img{display:block;width:100%;height:auto;border-radius:10px}
+.chart{position:relative;margin-top:20px}
+.chart h3{margin-bottom:2px}
+.chart .sub{font-size:14px;color:var(--muted);margin:0 0 10px}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:14px;color:var(--muted);margin-bottom:6px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.bar:hover{opacity:.8}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;line-height:1.4;padding:8px 10px;border-radius:8px;white-space:nowrap;opacity:0;transition:opacity .12s;transform:translate(-50%,calc(-100% - 10px))}
+.tip.on{opacity:1}
+.chart details{margin:12px 0 0;padding:10px 14px}
+.chart details table{margin-top:10px}
 @media print{nav,.theme-btn{display:none}section{padding:20px 0}details{break-inside:avoid}details>*{display:block}}
 </style>
 </head>
@@ -101,13 +119,22 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
 <main>
 <section id="definition"><div class="wrap">
   <h2><span class="n">01</span>Définition et origine</h2>
-  <p>L'<b>effet Pygmalion</b> (ou <b>effet Rosenthal</b>) désigne l'amélioration des performances d'une personne qui résulte des <b>attentes positives</b> d'une autre personne à son égard — typiquement un enseignant envers son élève, un manager envers un collaborateur. C'est un cas particulier de <b>prophétie autoréalisatrice</b>&nbsp;: une croyance, même fausse au départ, modifie les comportements de telle sorte qu'elle finit par se vérifier.</p>
+  <div class="split">
+    <div>
+      <p style="margin-top:0">L'<b>effet Pygmalion</b> (ou <b>effet Rosenthal</b>) désigne l'amélioration des performances d'une personne qui résulte des <b>attentes positives</b> d'une autre personne à son égard — typiquement un enseignant envers son élève, un manager envers un collaborateur.</p>
+      <p>C'est un cas particulier de <b>prophétie autoréalisatrice</b>&nbsp;: une croyance, même fausse au départ, modifie les comportements de telle sorte qu'elle finit par se vérifier.</p>
+      <blockquote>« Si les hommes définissent des situations comme réelles, elles sont réelles dans leurs conséquences. » — Théorème de Thomas (1928)</blockquote>
+    </div>
+    <figure class="painting">
+      <img src="pygmalion-galatee.jpg" width="1280" height="1649" loading="lazy" alt="Tableau de Gérôme : le sculpteur Pygmalion embrasse sa statue Galatée qui prend vie, son buste devenant chair tandis que ses jambes restent de marbre.">
+      <figcaption>Jean-Léon Gérôme, <i>Pygmalion et Galatée</i>, v. 1890. Metropolitan Museum of Art, New York (domaine public).</figcaption>
+    </figure>
+  </div>
   <div class="grid" style="margin-top:20px">
     <div class="card"><span class="tag t-aff">Le mythe</span><h3>Pygmalion, roi de Chypre</h3><p>Sculpteur, il tombe amoureux de la statue d'ivoire qu'il a créée, Galatée. Aphrodite lui donne vie (Ovide, <i>Métamorphoses</i>). L'image&nbsp;: on « façonne » l'autre selon l'idée qu'on s'en fait.</p></div>
     <div class="card"><span class="tag t-cog">La sociologie</span><h3>Merton, 1948</h3><p>Robert K. Merton forge l'expression <i>self-fulfilling prophecy</i>. Exemple&nbsp;: une rumeur de faillite pousse les clients à retirer leur argent… et la banque, pourtant solide, fait réellement faillite.</p></div>
     <div class="card"><span class="tag t-acc">La psychologie</span><h3>Rosenthal, années 1960</h3><p>Robert Rosenthal (Harvard) montre que les attentes d'un expérimentateur influencent les résultats de ses sujets, puis transpose l'hypothèse à l'école.</p></div>
   </div>
-  <blockquote>« Si les hommes définissent des situations comme réelles, elles sont réelles dans leurs conséquences. » — Théorème de Thomas (1928)</blockquote>
 </div></section>
 
 <section id="experiences"><div class="wrap">
@@ -119,6 +146,56 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
     <li><b>Résultats après un an</b><br>Les deux groupes progressent, mais les « prometteurs » gagnent en moyenne <b>≈&nbsp;12 points de QI</b> contre <b>≈&nbsp;8</b> pour le groupe témoin. L'écart est surtout marqué en <b>1<sup>re</sup> et 2<sup>e</sup> année</b> (≈&nbsp;15 et 10 points de différence), faible ou nul dans les classes plus âgées.</li>
     <li><b>Après deux ans</b><br>Avec un nouvel enseignant, les plus jeunes perdent une partie de l'avantage&nbsp;; les plus âgés le conservent mieux.</li>
   </ul>
+
+  <figure class="chart">
+    <h3>Le protocole en 4 temps</h3>
+    <p class="sub">Seule la croyance de l'enseignant diffère entre les deux groupes.</p>
+    <svg viewBox="0 0 640 190" role="img" aria-label="Protocole : pré-test de tous les élèves, tirage au sort de 20 %, liste remise à l'enseignant, re-test un an plus tard.">
+      <defs><marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
+      <g style="fill:var(--bg);stroke:var(--line)">
+        <rect x="4" y="4" width="140" height="182" rx="12"/><rect x="168" y="4" width="140" height="182" rx="12"/><rect x="332" y="4" width="140" height="182" rx="12"/><rect x="496" y="4" width="140" height="182" rx="12"/>
+      </g>
+      <g style="stroke:var(--muted)" stroke-width="2" marker-end="url(#arr2)"><path d="M146 80H164"/><path d="M310 80H328"/><path d="M474 80H492"/></g>
+      <g id="proto-pupils"></g>
+      <!-- step 3: the teacher's list -->
+      <rect x="372" y="28" width="62" height="80" rx="6" style="fill:var(--surface);stroke:var(--muted)" stroke-width="1.5"/>
+      <g style="stroke:var(--line)" stroke-width="4" stroke-linecap="round">
+        <path d="M384 44H422"/><path d="M384 76H422"/><path d="M384 92H422"/>
+      </g>
+      <g style="stroke:var(--s-exp)" stroke-width="4" stroke-linecap="round"><path d="M384 60H422"/><path d="M384 100H408"/></g>
+      <text x="438" y="64" font-size="18" style="fill:var(--s-exp)">★</text>
+      <!-- step 4: retest bars, heights proportional to 8.4 and 12.2 points -->
+      <path d="M534 108V64a4 4 0 0 1 4-4h22a4 4 0 0 1 4 4V108z" style="fill:var(--s-ctl)"/>
+      <path d="M568 108V42a4 4 0 0 1 4-4h22a4 4 0 0 1 4 4V108z" style="fill:var(--s-exp)"/>
+      <text x="549" y="54" text-anchor="middle" font-size="12" style="fill:var(--ink)">+8</text>
+      <text x="583" y="32" text-anchor="middle" font-size="12" style="fill:var(--ink)">+12</text>
+      <path d="M526 108.5H606" style="stroke:var(--muted)"/>
+      <g font-size="13" text-anchor="middle" style="fill:var(--ink)" font-weight="600">
+        <text x="74" y="140">1. Pré-test</text><text x="238" y="140">2. Tirage au sort</text><text x="402" y="140">3. La liste</text><text x="566" y="140">4. Re-test</text>
+      </g>
+      <g font-size="12" text-anchor="middle" style="fill:var(--muted)">
+        <text x="74" y="158">tous les élèves</text><text x="74" y="173">mai 1964</text>
+        <text x="238" y="158">20 % désignés</text><text x="238" y="173">« prometteurs »</text>
+        <text x="402" y="158">remise aux</text><text x="402" y="173">enseignants</text>
+        <text x="566" y="158">gain de QI</text><text x="566" y="173">mai 1965</text>
+      </g>
+    </svg>
+  </figure>
+
+  <figure class="chart" id="oak">
+    <h3>Gain de QI après un an, par niveau</h3>
+    <p class="sub">Points de QI gagnés entre le pré-test et le re-test. L'écart n'est net qu'en 1<sup>re</sup> et 2<sup>e</sup> année.</p>
+    <div class="legend"><span><i style="background:var(--s-exp)"></i>Désignés « prometteurs » (hasard)</span><span><i style="background:var(--s-ctl)"></i>Groupe témoin</span></div>
+    <svg viewBox="0 0 640 300" role="img" aria-label="Diagramme en barres des gains de QI par niveau scolaire, prometteurs contre témoins."></svg>
+    <div class="tip" role="tooltip"></div>
+    <details><summary>Voir les données</summary>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Niveau</th><th>Prometteurs</th><th>Témoins</th><th>Écart</th></tr></thead>
+        <tbody id="oak-rows"></tbody>
+      </table></div>
+    </details>
+    <figcaption>Source&nbsp;: Rosenthal &amp; Jacobson (1966), <i>Psychological Reports</i>, 19, tableau 1. L'écart est significatif seulement en 1<sup>re</sup> (p&nbsp;=&nbsp;0,002), 2<sup>e</sup> année (p&nbsp;=&nbsp;0,02) et sur l'ensemble (p&nbsp;=&nbsp;0,02).</figcaption>
+  </figure>
   <div class="grid" style="margin-top:12px">
     <div class="card"><span class="tag t-aff">Observation troublante</span><p>Dans la section « lente », des élèves <b>du groupe témoin</b> qui progressaient malgré tout étaient jugés <b>plus défavorablement</b> par leurs enseignants&nbsp;: un progrès inattendu dérange.</p></div>
     <div class="card"><span class="tag t-acc">Pas aux dépens des autres</span><p>Selon les auteurs, les enseignants n'ont pas passé plus de temps avec les « prometteurs »&nbsp;: c'est la <b>qualité</b> de l'interaction qui change, pas la quantité.</p></div>
@@ -132,10 +209,10 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
     <svg viewBox="0 0 560 380" width="100%" role="group" aria-label="Cycle de l'effet Pygmalion en quatre étapes">
       <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
       <g fill="none" style="stroke:var(--muted)" stroke-width="2" marker-end="url(#arr)">
-        <path d="M360 62 Q 470 80 470 150"/>
-        <path d="M470 232 Q 470 300 360 318"/>
-        <path d="M200 318 Q 90 300 90 232"/>
-        <path d="M90 150 Q 90 80 200 62"/>
+        <path d="M374 62 Q 465 66 465 150"/>
+        <path d="M465 226 Q 465 312 378 318"/>
+        <path d="M186 318 Q 95 312 95 230"/>
+        <path d="M95 154 Q 95 66 182 62"/>
       </g>
       <g class="loop-node" tabindex="0" data-i="0"><rect x="190" y="30" width="180" height="64" rx="14" style="fill:var(--aff-soft);stroke:var(--aff)" stroke-width="1.5"/><text x="280" y="58" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">1. Attente</text><text x="280" y="78" text-anchor="middle" font-size="13" style="fill:var(--muted)">« Cet élève va réussir »</text></g>
       <g class="loop-node" tabindex="0" data-i="1"><rect x="380" y="158" width="170" height="64" rx="14" style="fill:var(--cog-soft);stroke:var(--cog)" stroke-width="1.5"/><text x="465" y="186" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">2. Comportement</text><text x="465" y="206" text-anchor="middle" font-size="13" style="fill:var(--muted)">de l'enseignant</text></g>
@@ -151,7 +228,7 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
 <section id="facteurs"><div class="wrap">
   <h2><span class="n">04</span>Comment les attentes se transmettent&nbsp;: les 4 facteurs</h2>
   <p>Rosenthal (1973) résume les canaux par lesquels un enseignant traite différemment les élèves dont il attend beaucoup&nbsp;:</p>
-  <div class="grid">
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
     <div class="card"><span class="tag t-aff">Climat</span><h3>Chaleur socio-émotionnelle</h3><p>Plus de sourires, de contact visuel, de hochements de tête, une voix plus encourageante. C'est le facteur le plus puissant.</p></div>
     <div class="card"><span class="tag t-cog">Feedback</span><h3>Retours plus riches</h3><p>Éloges plus fréquents et plus précis sur la réussite, corrections plus détaillées et constructives sur l'erreur.</p></div>
     <div class="card"><span class="tag t-acc">Input</span><h3>Plus de contenu</h3><p>Des tâches plus ambitieuses, davantage de notions enseignées, des défis plus stimulants.</p></div>
@@ -176,12 +253,27 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
 <section id="critiques"><div class="wrap">
   <h2><span class="n">06</span>Critiques et nuances scientifiques</h2>
   <p>L'effet existe, mais il est <b>bien plus modeste</b> que ce que la vulgarisation laisse croire. À connaître pour une présentation honnête&nbsp;:</p>
-  <div class="grid">
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
     <div class="card"><span class="tag t-aff">Méthode</span><h3>Critiques dès 1968</h3><p>Thorndike, puis Elashoff &amp; Snow (<i>Pygmalion Reconsidered</i>, 1971) pointent un test peu fiable pour les jeunes enfants et des scores aberrants.</p></div>
     <div class="card"><span class="tag t-cog">Réplications</span><h3>Un tiers de succès</h3><p>Sur des centaines de tentatives, seulement un peu plus d'un tiers trouvent un effet significatif. La méta-analyse de Rosenthal &amp; Rubin (1978, 345 études) confirme néanmoins que l'effet est réel.</p></div>
     <div class="card"><span class="tag t-acc">Taille de l'effet</span><h3>Raudenbush, 1984</h3><p>Sur 18 expériences, l'effet sur le QI est faible (d&nbsp;≈&nbsp;0,11). Il n'apparaît que si l'enseignant <b>connaît peu</b> ses élèves au moment où on lui donne la fausse information (début d'année).</p></div>
     <div class="card"><span class="tag t-aff">Synthèse</span><h3>Jussim &amp; Harber, 2005</h3><p>35 ans de recherche&nbsp;: effets réels mais petits (r&nbsp;≈&nbsp;0,1–0,2), qui ne s'accumulent pas avec le temps. Ils sont <b>plus forts chez les élèves de groupes stigmatisés</b> ou défavorisés.</p></div>
   </div>
+  <figure class="chart" id="effects">
+    <h3>Taille de l'effet selon ce que l'on mesure</h3>
+    <p class="sub">d de Cohen&nbsp;: 0,2 = effet petit, 0,5 = effet moyen. L'effet est plus net sur les résultats scolaires que sur le QI.</p>
+    <svg viewBox="0 0 640 200" role="img" aria-label="Barres horizontales : résultats scolaires d = 0,38 ; QI d = 0,16 ; QI selon Raudenbush d = 0,11."></svg>
+    <div class="tip" role="tooltip"></div>
+    <figcaption>Sources&nbsp;: Smith (1980), cité par Raudenbush (1984)&nbsp;; Raudenbush (1984).</figcaption>
+  </figure>
+
+  <figure class="chart">
+    <h3>Sur 100 élèves, combien sont concernés&nbsp;?</h3>
+    <p class="sub">Un effet moyen de r&nbsp;≈&nbsp;0,1 à 0,2 change les résultats d'environ 5 à 10 élèves sur 100 (Brophy, 1983&nbsp;; Jussim &amp; Harber, 2005).</p>
+    <div class="legend"><span><i style="background:var(--s-exp)"></i>Touchés (≈ 5)</span><span><i style="background:color-mix(in srgb,var(--s-exp) 40%,var(--surface))"></i>Jusqu'à 10</span><span><i style="background:var(--grid)"></i>Non affectés</span></div>
+    <svg id="waffle" viewBox="0 0 640 160" role="img" aria-label="100 points représentant des élèves : 5 touchés, 5 de plus possibles, 90 non affectés."></svg>
+  </figure>
+
   <p class="warn"><b>Point clé&nbsp;:</b> si les attentes des enseignants prédisent bien la réussite, c'est surtout parce qu'elles sont souvent <b>justes</b> (fondées sur ce qu'ils observent), et seulement en partie parce qu'elles sont autoréalisatrices. L'effet porte davantage sur les <b>résultats scolaires</b> et les interactions que sur le QI lui-même.</p>
 </div></section>
 
@@ -261,6 +353,133 @@ nodes.forEach(n => {
   n.addEventListener("click", () => showStep(n));
   n.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showStep(n); } });
 });
+
+// --- SVG helpers ---
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, parent) {
+  const node = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
+  if (parent) parent.appendChild(node);
+  return node;
+}
+function text(parent, x, y, str, attrs = {}) {
+  const t = el("text", { x, y, "font-size": 12, style: "fill:var(--muted)", ...attrs }, parent);
+  t.textContent = str;
+  return t;
+}
+const num = (v, digits = 1) => v.toLocaleString("fr-FR", { minimumFractionDigits: digits, maximumFractionDigits: digits });
+const signed = v => (v > 0 ? "+" : v < 0 ? "−" : "") + num(Math.abs(v));
+// Vertical bar with 4px rounded top, flat on the baseline.
+function vbar(x, y, w, h) {
+  const r = Math.min(4, h, w / 2);
+  return `M${x} ${y + h}V${y + r}a${r} ${r} 0 0 1 ${r}-${r}h${w - 2 * r}a${r} ${r} 0 0 1 ${r} ${r}V${y + h}z`;
+}
+// Horizontal bar with 4px rounded right end, flat on the left axis.
+function hbar(x, y, w, h) {
+  const r = Math.min(4, w, h / 2);
+  return `M${x} ${y}H${x + w - r}a${r} ${r} 0 0 1 ${r} ${r}V${y + h - r}a${r} ${r} 0 0 1 -${r} ${r}H${x}z`;
+}
+// Tooltip positioned above the hovered mark, relative to its figure.
+function bindTip(fig, target, html) {
+  const tip = fig.querySelector(".tip");
+  const show = () => {
+    const f = fig.getBoundingClientRect(), b = target.getBoundingClientRect();
+    tip.innerHTML = html; // static strings built from the data arrays below
+    tip.style.left = (b.left + b.width / 2 - f.left) + "px";
+    tip.style.top = (b.top - f.top) + "px";
+    tip.classList.add("on");
+  };
+  const hide = () => tip.classList.remove("on");
+  target.addEventListener("mouseenter", show);
+  target.addEventListener("mouseleave", hide);
+  target.addEventListener("focus", show);
+  target.addEventListener("blur", hide);
+}
+
+// --- Protocol figure: 20 pupils, 4 drawn at random (20 %) ---
+(() => {
+  const g = document.getElementById("proto-pupils");
+  const chosen = new Set([2, 8, 11, 17]);
+  for (let i = 0; i < 20; i++) {
+    const col = i % 5, row = Math.floor(i / 5);
+    el("circle", { cx: 30 + col * 22, cy: 34 + row * 22, r: 7, style: "fill:var(--muted);opacity:.45" }, g);
+    el("circle", { cx: 194 + col * 22, cy: 34 + row * 22, r: 7, style: `fill:var(${chosen.has(i) ? "--s-exp" : "--s-ctl"})` }, g);
+  }
+})();
+
+// --- Oak School: mean IQ gain after one year (Rosenthal & Jacobson 1966, table 1) ---
+(() => {
+  const data = [
+    { label: "1re année", exp: 27.4, ctl: 12.0, nExp: 7, nCtl: 48 },
+    { label: "2e année", exp: 16.5, ctl: 7.0, nExp: 12, nCtl: 47 },
+    { label: "3e année", exp: 5.0, ctl: 5.0, nExp: 14, nCtl: 40 },
+    { label: "4e année", exp: 5.6, ctl: 2.2, nExp: 12, nCtl: 49 },
+    { label: "5e année", exp: 17.4, ctl: 17.5, nExp: 9, nCtl: 26 },
+    { label: "6e année", exp: 10.0, ctl: 10.7, nExp: 11, nCtl: 45 },
+    { label: "Ensemble", exp: 12.2, ctl: 8.4, nExp: 65, nCtl: 255 }
+  ];
+  const fig = document.getElementById("oak"), svg = fig.querySelector("svg");
+  const m = { l: 36, r: 6, t: 26, b: 40 }, W = 640, H = 300, max = 30;
+  const plotW = W - m.l - m.r, plotH = H - m.t - m.b;
+  const y = v => m.t + plotH * (1 - v / max);
+  for (let v = 0; v <= max; v += 10) {
+    el("path", { d: `M${m.l} ${y(v)}H${W - m.r}`, style: `stroke:var(${v ? "--grid" : "--muted"})` }, svg);
+    text(svg, m.l - 8, y(v) + 4, v, { "text-anchor": "end" });
+  }
+  const gw = plotW / data.length, bw = 26;
+  el("path", { d: `M${m.l + gw * 6} ${m.t - 10}V${y(0)}`, style: "stroke:var(--line)", "stroke-dasharray": "4 4" }, svg);
+  data.forEach((d, i) => {
+    const cx = m.l + gw * (i + 0.5);
+    [["exp", "--s-exp", "Prometteurs", d.nExp, cx - bw - 1], ["ctl", "--s-ctl", "Témoins", d.nCtl, cx + 1]].forEach(([key, color, name, n, x]) => {
+      const g = el("g", { class: "bar", tabindex: 0 }, svg);
+      el("rect", { x: x - 1, y: m.t, width: bw + 2, height: plotH, fill: "transparent" }, g); // hit area taller than the bar
+      el("path", { d: vbar(x, y(d[key]), bw, y(0) - y(d[key])), style: `fill:var(${color})` }, g);
+      bindTip(fig, g, `<b>${d.label}</b><br>${name} : +${num(d[key])} pts (n = ${n})`);
+    });
+    const diff = d.exp - d.ctl;
+    text(svg, cx, y(Math.max(d.exp, d.ctl)) - 8, "écart " + signed(diff), { "text-anchor": "middle", style: `fill:var(${Math.abs(diff) >= 5 ? "--ink" : "--muted"})`, "font-weight": Math.abs(diff) >= 5 ? 600 : 400 });
+    text(svg, cx, H - m.b + 20, d.label, { "text-anchor": "middle", style: "fill:var(--ink)" });
+    document.getElementById("oak-rows").insertAdjacentHTML("beforeend",
+      `<tr><td>${d.label}</td><td>+${num(d.exp)} (n = ${d.nExp})</td><td>+${num(d.ctl)} (n = ${d.nCtl})</td><td>${signed(diff)}</td></tr>`);
+  });
+  text(svg, m.l - 8, m.t - 12, "points de QI", { "text-anchor": "start" });
+})();
+
+// --- Effect sizes (Cohen's d) ---
+(() => {
+  const data = [
+    { label: "Résultats scolaires", src: "Smith 1980 · 78 estimations", d: 0.38 },
+    { label: "QI", src: "Smith 1980 · 22 estimations", d: 0.16 },
+    { label: "QI", src: "Raudenbush 1984 · 18 expériences", d: 0.11 }
+  ];
+  const fig = document.getElementById("effects"), svg = fig.querySelector("svg");
+  const m = { l: 210, r: 40, t: 10, b: 30 }, W = 640, max = 0.6, rowH = 50, barH = 20;
+  const plotW = W - m.l - m.r, H = 200, x = v => m.l + plotW * v / max;
+  [[0.2, "petit"], [0.5, "moyen"]].forEach(([v, name]) => {
+    el("path", { d: `M${x(v)} ${m.t}V${H - m.b}`, style: "stroke:var(--line)", "stroke-dasharray": "4 4" }, svg);
+    text(svg, x(v), H - m.b + 18, `${num(v)} · ${name}`, { "text-anchor": "middle" });
+  });
+  el("path", { d: `M${m.l} ${m.t}V${H - m.b}`, style: "stroke:var(--muted)" }, svg);
+  data.forEach((d, i) => {
+    const top = m.t + 10 + i * rowH;
+    text(svg, m.l - 12, top + 9, d.label, { "text-anchor": "end", "font-size": 14, style: "fill:var(--ink)", "font-weight": 600 });
+    text(svg, m.l - 12, top + 26, d.src, { "text-anchor": "end" });
+    const g = el("g", { class: "bar", tabindex: 0 }, svg);
+    el("rect", { x: m.l, y: top - 6, width: plotW, height: barH + 12, fill: "transparent" }, g);
+    el("path", { d: hbar(m.l, top, x(d.d) - m.l, barH), style: "fill:var(--s-ctl)" }, g);
+    text(svg, x(d.d) + 8, top + 15, num(d.d, 2), { style: "fill:var(--ink)", "font-weight": 600, "font-size": 13 });
+    bindTip(fig, g, `<b>${d.label}</b><br>${d.src}<br>d = ${num(d.d, 2)}`);
+  });
+})();
+
+// --- 100 pupils: about 5 affected, up to 10 ---
+(() => {
+  const svg = document.getElementById("waffle");
+  for (let i = 0; i < 100; i++) {
+    const fill = i < 5 ? "var(--s-exp)" : i < 10 ? "color-mix(in srgb,var(--s-exp) 40%,var(--surface))" : "var(--grid)";
+    el("circle", { cx: 35 + (i % 20) * 30, cy: 25 + Math.floor(i / 20) * 30, r: 11, style: `fill:${fill}` }, svg);
+  }
+})();
 
 // Theme: follows the OS by default; the button overrides it.
 const root = document.documentElement, darkQuery = matchMedia("(prefers-color-scheme: dark)");
