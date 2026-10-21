@@ -31,8 +31,9 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
 .row{display:flex;gap:32px}
 .row>*{flex:1}
 #bar{position:absolute;left:0;bottom:0;height:8px;width:100%;background:var(--aff);transform-origin:0 50%;transform:scaleX(0)}
-.pupils{display:grid;grid-template-columns:repeat(8,56px);gap:22px}
-.pupil{width:56px;height:56px;border-radius:50%;background:var(--muted)}
+.pupils{display:grid;grid-template-columns:repeat(8,56px);gap:18px 22px}
+.pupil{width:56px;height:62px;color:var(--muted)}
+.pupil svg{width:100%;height:100%;display:block}
 .list-line{height:16px;border-radius:8px;background:var(--line);margin:22px 0}
 .bars{position:absolute;left:140px;right:140px;bottom:150px;height:620px;display:flex;align-items:flex-end;gap:110px;border-bottom:3px solid var(--muted);padding:0 60px}
 .group{flex:1;display:flex;align-items:flex-end;justify-content:center;gap:8px;height:100%;position:relative}
@@ -44,17 +45,18 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
 .icon{width:96px;height:96px;margin-bottom:22px}
 .tags{display:flex;flex-wrap:wrap;gap:22px}
 .art{position:absolute;top:0;bottom:0;height:1080px;object-fit:cover;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 30%);mask-image:linear-gradient(to right,transparent 0,#000 30%)}
+.photo{position:absolute;overflow:hidden;border-radius:28px;border:2px solid var(--line)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
 .art.top{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 30%),linear-gradient(#000 65%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 30%),linear-gradient(#000 65%,transparent);mask-composite:intersect}
 .flow{display:flex;align-items:baseline;gap:20px;font-size:48px}
 .flow i{font-style:normal;color:var(--muted)}
 .flow small{font-size:28px;font-style:italic}
 .tags .chip{margin:0}
 .reco{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.reco .card{position:relative;padding:30px 36px}
-.reco .icon{width:120px;height:120px;margin-bottom:18px}
-.reco h3{font-size:38px;white-space:nowrap}
-.reco p{font-size:28px}
-.num{position:absolute;top:26px;right:32px;font-style:normal;font-family:Fraunces,serif;font-size:56px;font-weight:700;color:var(--line)}
+.reco .card{position:relative;padding:36px 40px;height:330px;display:flex;flex-direction:column;justify-content:flex-end}
+.reco .icon{width:140px;height:140px;margin-bottom:26px}
+.reco h3{font-size:42px;white-space:nowrap}
+.num{position:absolute;top:28px;right:32px;width:64px;height:64px;border-radius:50%;background:var(--aff);color:var(--bg);font-style:normal;font-size:36px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .week{position:absolute;left:140px;right:140px;bottom:90px;display:flex;gap:40px;align-items:flex-end}
 .day{flex:1;display:flex;flex-direction:column;align-items:center;gap:14px}
 .day .vbar{width:100%;background:var(--acc)}
@@ -65,16 +67,17 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
 <body>
 
 <section class="scene" data-scene="titre">
+  <img class="el art" data-at="0" data-push="avenir" style="right:0;width:1080px;transform-origin:75% 40%" src="img/titre.jpg" alt="">
   <div class="label el" data-at="0">Psychologie de l'éducation · <b>Fiche de préparation</b></div>
   <div style="margin-top:200px">
     <h1 class="el" data-at="0.02">L'effet <span class="aff">Pygmalion</span></h1>
-    <h1 class="el" data-at="0.3" style="color:var(--muted);font-weight:500;font-size:72px;margin-top:20px">Et si votre regard pouvait changer<br>l'avenir d'un élève&nbsp;?</h1>
+    <h1 class="el" data-at="0.3" style="color:var(--muted);font-weight:500;font-size:62px;margin-top:24px">Et si votre regard<br>pouvait changer l'avenir<br>d'un élève&nbsp;?</h1>
   </div>
 </section>
 
 <section class="scene" data-scene="mythe">
   <div class="label el" data-at="0">01 · <b>Origine</b></div>
-  <img class="el art" data-at="0" src="img/mythe.jpg" alt="" style="right:0;width:1060px">
+  <img class="el art" data-at="0" data-push="vie" style="right:0;width:1060px;transform-origin:53% 50%" src="img/mythe.jpg" alt="">
   <div style="position:absolute;left:140px;width:760px;top:150px">
     <h2 class="el" data-at="0.08">Pygmalion <span style="color:var(--muted);font-weight:500">&amp;</span> <span class="aff">Galatée</span></h2>
     <div class="el" data-w="1948" style="margin-top:90px;display:flex;align-items:baseline;gap:30px">
@@ -133,7 +136,7 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
     <g class="sel" data-at="0.24" data-anim="pop" style="transform-origin:1420px 600px"><rect x="1150" y="530" width="540" height="140" rx="28" fill="var(--cog-soft)" stroke="var(--cog)" stroke-width="3"/><text x="1420" y="585" text-anchor="middle" font-size="40" font-weight="700" fill="var(--ink)">2. Comportement</text><text x="1420" y="630" text-anchor="middle" font-size="27" fill="var(--muted)">sourire · questions · encouragements</text></g>
     <g class="sel" data-at="0.55" data-anim="pop" style="transform-origin:960px 880px"><rect x="750" y="820" width="420" height="120" rx="28" fill="var(--acc-soft)" stroke="var(--acc)" stroke-width="3"/><text x="960" y="872" text-anchor="middle" font-size="40" font-weight="700" fill="var(--ink)">3. Image de soi</text><text x="960" y="915" text-anchor="middle" font-size="28" fill="var(--muted)">« je suis capable »</text></g>
     <g class="sel" data-at="0.72" data-anim="pop" style="transform-origin:500px 600px"><rect x="290" y="540" width="420" height="120" rx="28" fill="var(--cog-soft)" stroke="var(--cog)" stroke-width="3"/><text x="500" y="592" text-anchor="middle" font-size="40" font-weight="700" fill="var(--ink)">4. Progrès</text><text x="500" y="635" text-anchor="middle" font-size="28" fill="var(--muted)">qui confirment l'attente</text></g>
-    <text class="sel" data-at="0.9" x="960" y="612" text-anchor="middle" font-size="38" font-style="italic" fill="var(--muted)" font-family="Fraunces">la boucle se renforce</text>
+    <text class="sel" data-at="0.9" x="960" y="592" text-anchor="middle" font-size="36" font-style="italic" fill="var(--muted)" font-family="Fraunces"><tspan x="960">la boucle</tspan><tspan x="960" dy="46">se renforce</tspan></text>
   </svg>
 </section>
 
@@ -153,19 +156,20 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
 </section>
 
 <section class="scene" data-scene="enjeux">
-  <img class="el art" data-at="0" src="img/enjeux.jpg" alt="" style="right:0;width:1160px;object-position:80% 50%">
+  <div class="el photo" data-at="0.1" style="right:110px;top:230px;width:960px;height:640px"><img data-push="décrocher" data-scale="1.2" style="transform-origin:90% 47%" src="img/enjeux.jpg" alt=""></div>
+  <div class="el" data-w="décrocher" data-anim="pop" style="position:absolute;left:1655px;top:425px;width:150px;height:200px;border-radius:50%;border:5px dashed var(--bad)"></div><!-- rings the pupil alone at the back -->
   <div class="label el" data-at="0">06 · <b>Les enjeux</b></div>
-  <h2 class="el" data-at="0.06" style="margin-top:20px;width:820px">Nos attentes ne sont <span class="aff">jamais neutres</span></h2>
-  <div class="tags" style="width:760px;margin-top:60px">
+  <h2 class="el" data-at="0.06" style="margin-top:20px;width:680px">Nos attentes ne sont <span class="aff">jamais neutres</span></h2>
+  <div class="tags" style="width:680px;margin-top:60px">
     <span class="chip cog el" data-w="social" data-anim="pop">milieu social</span>
     <span class="chip cog el" data-w="genre" data-anim="pop">genre</span>
     <span class="chip cog el" data-w="comportement" data-anim="pop">comportement</span>
     <span class="chip cog el" data-w="prénom" data-anim="pop">prénom</span>
   </div>
-  <div class="flow" style="margin-top:60px">
+  <div class="flow" style="margin-top:60px;font-size:40px">
     <b class="bad el" data-w="confiance">Confiance perdue</b><i class="el" data-w="décrocher">→</i><b class="bad el" data-w="décrocher">Décrochage</b>
   </div>
-  <div class="el" data-w="équité" data-anim="pop" style="position:absolute;left:140px;width:760px;bottom:110px;font-size:46px;font-weight:600;padding:28px 36px;border-radius:28px;background:var(--acc-soft);border:2px solid var(--acc)">
+  <div class="el" data-w="équité" data-anim="pop" style="position:absolute;left:140px;width:680px;bottom:110px;font-size:46px;font-weight:600;padding:28px 36px;border-radius:28px;background:var(--acc-soft);border:2px solid var(--acc)">
     L'enjeu&nbsp;: <span class="acc">l'équité</span>
   </div>
 </section>
@@ -200,14 +204,14 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
   <h2 class="el" data-at="0" style="margin-top:20px">Un élève. <span class="acc">Une semaine.</span></h2>
   <p class="el" data-at="0.15" style="font-size:36px;color:var(--muted);margin-top:14px">Choisissez un élève que vous remarquez peu.</p>
   <div class="week">
-    <div class="day"><div class="vbar sel-bar" data-at="0.36" data-px="70"></div><b class="el" data-at="0.36">Lun</b><span class="el" data-at="0.36">un regard</span></div>
-    <div class="day"><div class="vbar sel-bar" data-at="0.45" data-px="125"></div><b class="el" data-at="0.45">Mar</b><span class="el" data-at="0.45">un encouragement</span></div>
-    <div class="day"><div class="vbar sel-bar" data-at="0.58" data-px="180"></div><b class="el" data-at="0.58">Mer</b><span class="el" data-at="0.58">une question</span></div>
-    <div class="day"><div class="vbar sel-bar" data-at="0.66" data-px="240"></div><b class="el" data-at="0.66">Jeu</b><span class="el" data-at="0.66">un sourire</span></div>
-    <div class="day"><div class="vbar sel-bar" data-at="0.74" data-px="310"></div><b class="el" data-at="0.74">Ven</b><span class="el" data-at="0.74">un progrès&nbsp;!</span></div>
+    <div class="day"><div class="vbar sel-bar" data-at="0.36" data-px="60"></div><b class="el" data-at="0.36">Lun</b><span class="el" data-at="0.36">un regard</span></div>
+    <div class="day"><div class="vbar sel-bar" data-at="0.45" data-px="100"></div><b class="el" data-at="0.45">Mar</b><span class="el" data-at="0.45">un encouragement</span></div>
+    <div class="day"><div class="vbar sel-bar" data-at="0.58" data-px="140"></div><b class="el" data-at="0.58">Mer</b><span class="el" data-at="0.58">une question</span></div>
+    <div class="day"><div class="vbar sel-bar" data-at="0.66" data-px="185"></div><b class="el" data-at="0.66">Jeu</b><span class="el" data-at="0.66">un sourire</span></div>
+    <div class="day"><div class="vbar sel-bar" data-at="0.74" data-px="235"></div><b class="el" data-at="0.74">Ven</b><span class="el" data-at="0.74">un progrès&nbsp;!</span></div>
   </div>
   <p class="el serif" data-w="observez" style="font-size:52px;font-style:italic;margin-top:40px">Et observez <span class="acc">ce qui change.</span></p>
-  <img class="el art top" data-at="0" src="img/defi.jpg" alt="" style="right:0;width:960px;height:640px;bottom:auto">
+  <img class="el art top" data-at="0" data-push="encouragement" style="right:0;width:960px;height:640px;bottom:auto;transform-origin:60% 35%" src="img/defi.jpg" alt="">
 </section>
 
 <section class="scene" data-scene="fin">
@@ -232,6 +236,7 @@ function buildPupils() {
   return Array.from({ length: 40 }, (_, i) => {
     const d = document.createElement("div");
     d.className = "pupil";
+    d.innerHTML = '<svg viewBox="0 0 28 31" fill="currentColor"><circle cx="14" cy="8" r="7"/><path d="M2 31v-5c0-6 5-10 12-10s12 4 12 10v5z"/></svg>'; // head + shoulders
     box.appendChild(d);
     return chosen.has(i) ? d : null;
   }).filter(Boolean);
@@ -277,13 +282,17 @@ function build(timings) {
         seq.push([el, { opacity: [0, 1], y: [40, 0] }, { at: when, duration: 0.7, ease }]);
       }
     });
-    scene.querySelectorAll(".art").forEach(img => seq.push([img, { scale: [1, 1.06] }, { at: start, duration: len, ease: "linear" }])); // slow push so stills never freeze
+    // Camera: a slow push toward the subject (CSS transform-origin) when the narration names it; diagrams never move.
+    scene.querySelectorAll("[data-push]").forEach(img => {
+      const from = atWord(img.dataset.push);
+      seq.push([img, { scale: [1, parseFloat(img.dataset.scale ?? 1.15)] }, { at: from, duration: Math.min(3, start + len - from), ease: [0.45, 0, 0.55, 1] }]);
+    });
     scene.querySelectorAll(".sel-bar").forEach(b => {
       b.style.height = (b.dataset.px ?? parseFloat(b.dataset.v) / BAR_MAX * BAR_PX) + "px"; // data-px: fixed height, data-v: IQ gain
       b.style.transform = "scaleY(0)";
       seq.push([b, { scaleY: [0, 1] }, { at: at(parseFloat(b.dataset.at)), duration: 0.9, ease }]);
     });
-    if (s.id === "experience") chosen.forEach((d, i) => seq.push([d, { backgroundColor: accent, scale: [1, 1.25, 1] }, { at: at(0.78) + i * 0.08, duration: 0.5 }]));
+    if (s.id === "experience") chosen.forEach((d, i) => seq.push([d, { color: accent, scale: [1, 1.25, 1] }, { at: at(0.78) + i * 0.08, duration: 0.5 }]));
     if (s.id === "nuances") {
       waffle.slice(0, 5).forEach((d, i) => seq.push([d, { backgroundColor: accent, scale: [1, 1.3, 1] }, { at: at(0.3) + i * 0.1, duration: 0.5 }]));
       waffle.slice(5, 10).forEach((d, i) => seq.push([d, { backgroundColor: accent, opacity: 0.45 }, { at: at(0.4) + i * 0.1, duration: 0.5 }]));

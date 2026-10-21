@@ -1,8 +1,9 @@
 // Renders scenes.html frame by frame (seeking the Motion timeline) into an mp4, then muxes the narration.
-// usage: node render.mjs [--preview t1,t2,...] [--mux-only]
+// usage: [WORKERS=n] node render.mjs [--preview t1,t2,...] [--mux-only]
 //   --preview writes PNG stills instead of the video; --mux-only reuses silent.mp4 and only redoes the audio.
 import puppeteer from "puppeteer-core";
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile, rm } from "node:fs/promises";
+import os from "node:os";
 import { existsSync } from "node:fs";
 import { spawn, execFileSync } from "node:child_process";
 
@@ -41,67 +42,97 @@ const theme = themeIdx > -1 ? process.argv[themeIdx + 1] : "dark";
 if (!["dark", "light"].includes(theme)) throw new Error("--theme must be dark or light");
 const suffix = theme === "light" ? "-light" : "";
 
-const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: ["--hide-scrollbars"] });
-try {
+// Workers render contiguous frame ranges in parallel (one headless browser each); the timeline is a pure
+// function of time, so the chunks join seamlessly. Default: half the CPU cores.
+const WORKERS = Number(process.env.WORKERS) || Math.max(1, Math.floor(os.cpus().length / 2));
+
+async function openPage() {
+  const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: ["--hide-scrollbars"] });
   const page = await browser.newPage();
   await page.setViewport({ width: 1920, height: 1080 });
   page.on("pageerror", e => { throw e; });
   await page.evaluateOnNewDocument(t => { window.TIMINGS = t; }, timings);
-  await page.goto(`file://${dir}scenes.html?theme=${theme}`,{ waitUntil: "networkidle0" });
+  await page.goto(`file://${dir}scenes.html?theme=${theme}`, { waitUntil: "networkidle0" });
   await page.waitForFunction("window.READY === true", { timeout: 20000 });
-  const total = await page.evaluate("window.TOTAL");
   const seekTo = t => page.evaluate(t => new Promise(r => { seek(t); requestAnimationFrame(() => requestAnimationFrame(r)); }), t);
+  return { browser, page, seekTo, total: await page.evaluate("window.TOTAL") };
+}
 
-  const previewIdx = process.argv.indexOf("--preview");
-  if (previewIdx > -1) {
-    for (const t of process.argv[previewIdx + 1].split(",").map(Number)) {
-      await seekTo(t);
-      await page.screenshot({ path: `${dir}preview${suffix}-${t}.png` });
-    }
-    console.log("previews written, total", total.toFixed(2));
-  } else if (!process.argv.includes("--mux-only")) {
+// Renders frames [from, to) into one H.264 segment.
+async function renderChunk(from, to, out, onFrame) {
+  const { browser, page, seekTo } = await openPage();
+  try {
     const ff = spawn("ffmpeg", ["-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", String(FPS), "-i", "-",
-      "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", "-preset", "medium", `${dir}silent${suffix}.mp4`], { stdio: ["pipe", "inherit", "inherit"] });
-    const ffDone = new Promise((res, rej) => ff.on("close", c => c === 0 ? res() : rej(new Error("ffmpeg video exit " + c))));
-    const frames = Math.ceil(total * FPS);
-    for (let i = 0; i < frames; i++) {
+      "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", "-preset", "medium", out], { stdio: ["pipe", "inherit", "inherit"] });
+    const ffDone = new Promise((res, rej) => ff.on("close", c => c === 0 ? res() : rej(new Error(`ffmpeg ${out} exit ${c}`))));
+    for (let i = from; i < to; i++) {
       await seekTo(i / FPS);
-      const buf = await page.screenshot({ type: "jpeg", quality: 92 });
+      const buf = await page.screenshot({ type: "jpeg", quality: 92, optimizeForSpeed: true });
       if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once("drain", r));
-      if (i % 250 === 0) console.log(`frame ${i}/${frames}`);
+      onFrame();
     }
     ff.stdin.end();
     await ffDone;
+  } finally {
+    await browser.close();
   }
-  if (previewIdx === -1) {
-    // Place each narration clip at its scene's speech start.
-    const inputs = [], filters = [];
-    let t = 0;
-    timings.forEach((s, i) => {
-      inputs.push("-i", `${dir}audio/${s.id}.mp3`);
-      const ms = Math.round((t + PAD) * 1000);
-      filters.push(`[${i + 1}:a]adelay=${ms}|${ms}[a${i}]`);
-      t += PAD + s.duration + TAIL;
-    });
-    let mix = `${filters.join(";")};${timings.map((_, i) => `[a${i}]`).join("")}amix=inputs=${timings.length}:normalize=0`;
-    const music = `${dir}audio/music.mp3`;
-    if (existsSync(music)) {
-      // Duck the music around each narration clip: 1 while speaking, ramping in DUCK_IN before and out DUCK_OUT after.
-      const speaking = [];
-      let t2 = 0;
-      timings.forEach(s => { speaking.push([t2 + PAD, t2 + PAD + s.duration]); t2 += PAD + s.duration + TAIL; });
-      const duck = speaking.map(([a, b]) => `clip(min((t-${(a - DUCK_IN).toFixed(2)})/${DUCK_IN}\\,(${(b + DUCK_OUT).toFixed(2)}-t)/${DUCK_OUT})\\,0\\,1)`)
-        .reduce((acc, e) => `max(${acc}\\,${e})`);
-      const gain = `pow(10\\,(${MUSIC_GAP_DB}+(${MUSIC_SPEECH_DB - MUSIC_GAP_DB})*${duck})/20)`;
-      inputs.push("-i", music);
-      mix += `[voice];[${timings.length + 1}:a]atrim=0:${total.toFixed(2)},volume=eval=frame:volume='${gain}',afade=t=in:d=1.5,afade=t=out:st=${(total - 3).toFixed(2)}:d=3[bed];[voice][bed]amix=inputs=2:normalize=0`;
+}
+
+const previewIdx = process.argv.indexOf("--preview");
+const probe = await openPage();
+const total = probe.total;
+try {
+  if (previewIdx > -1) {
+    for (const t of process.argv[previewIdx + 1].split(",").map(Number)) {
+      await probe.seekTo(t);
+      await probe.page.screenshot({ path: `${dir}preview${suffix}-${t}.png` });
     }
-    mix += ",loudnorm=I=-16:TP=-1.5[a]"; // phone-friendly loudness; the raw narration sits around -28 LUFS
-    const out = `${dir}../explainer${suffix}.mp4`;
-    execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-i", `${dir}silent${suffix}.mp4`, ...inputs, "-filter_complex", mix,
-      "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-ar", "48000", "-c:a", "aac", "-b:a", "160k", out], { stdio: "inherit" });
-    console.log("done:", out, total.toFixed(1) + "s");
+    console.log("previews written, total", total.toFixed(2));
   }
 } finally {
-  await browser.close();
+  await probe.browser.close();
+}
+
+if (previewIdx === -1 && !process.argv.includes("--mux-only")) {
+  const frames = Math.ceil(total * FPS), started = Date.now();
+  let done = 0;
+  const onFrame = () => { if (++done % 500 === 0) console.log(`frame ${done}/${frames} · ${(done / ((Date.now() - started) / 1000)).toFixed(1)} fps`); };
+  const parts = Array.from({ length: WORKERS }, (_, k) => ({
+    from: Math.floor(k * frames / WORKERS), to: Math.floor((k + 1) * frames / WORKERS), file: `${dir}silent-part${k}.mp4` }));
+  await Promise.all(parts.map(p => renderChunk(p.from, p.to, p.file, onFrame)));
+  await writeFile(`${dir}parts.txt`, parts.map(p => `file '${p.file}'`).join("\n") + "\n");
+  execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", `${dir}parts.txt`, "-c", "copy", `${dir}silent${suffix}.mp4`], { stdio: "inherit" });
+  for (const p of parts) await rm(p.file);
+  await rm(`${dir}parts.txt`);
+  console.log(`video: ${frames} frames with ${WORKERS} workers in ${((Date.now() - started) / 1000).toFixed(0)} s`);
+}
+
+if (previewIdx === -1) {
+  // Place each narration clip at its scene's speech start.
+  const inputs = [], filters = [];
+  let t = 0;
+  timings.forEach((s, i) => {
+    inputs.push("-i", `${dir}audio/${s.id}.mp3`);
+    const ms = Math.round((t + PAD) * 1000);
+    filters.push(`[${i + 1}:a]adelay=${ms}|${ms}[a${i}]`);
+    t += PAD + s.duration + TAIL;
+  });
+  let mix = `${filters.join(";")};${timings.map((_, i) => `[a${i}]`).join("")}amix=inputs=${timings.length}:normalize=0`;
+  const music = `${dir}audio/music.mp3`;
+  if (existsSync(music)) {
+    // Duck the music around each narration clip: 1 while speaking, ramping in DUCK_IN before and out DUCK_OUT after.
+    const speaking = [];
+    let t2 = 0;
+    timings.forEach(s => { speaking.push([t2 + PAD, t2 + PAD + s.duration]); t2 += PAD + s.duration + TAIL; });
+    const duck = speaking.map(([a, b]) => `clip(min((t-${(a - DUCK_IN).toFixed(2)})/${DUCK_IN}\\,(${(b + DUCK_OUT).toFixed(2)}-t)/${DUCK_OUT})\\,0\\,1)`)
+      .reduce((acc, e) => `max(${acc}\\,${e})`);
+    const gain = `pow(10\\,(${MUSIC_GAP_DB}+(${MUSIC_SPEECH_DB - MUSIC_GAP_DB})*${duck})/20)`;
+    inputs.push("-i", music);
+    mix += `[voice];[${timings.length + 1}:a]atrim=0:${total.toFixed(2)},volume=eval=frame:volume='${gain}',afade=t=in:d=1.5,afade=t=out:st=${(total - 3).toFixed(2)}:d=3[bed];[voice][bed]amix=inputs=2:normalize=0`;
+  }
+  mix += ",loudnorm=I=-16:TP=-1.5[a]"; // phone-friendly loudness; the raw narration sits around -28 LUFS
+  const out = `${dir}../explainer${suffix}.mp4`;
+  execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-i", `${dir}silent${suffix}.mp4`, ...inputs, "-filter_complex", mix,
+    "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-ar", "48000", "-c:a", "aac", "-b:a", "160k", out], { stdio: "inherit" });
+  console.log("done:", out, total.toFixed(1) + "s");
 }
