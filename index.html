@@ -54,6 +54,9 @@ section{padding:48px 0;border-bottom:1px solid var(--line)}
 .stat span{font-size:14px;color:var(--muted)}
 figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
 figcaption{font-size:14px;color:var(--muted);margin-top:10px}
+figure.video{margin-top:28px;padding:10px}
+figure.video video{display:block;width:100%;aspect-ratio:16/9;border-radius:10px;background:#12141a}
+figure.video figcaption{padding:0 6px 4px}
 svg text{font-family:Inter,sans-serif}
 .loop-node{cursor:pointer;transition:opacity .2s}
 .loop-node:hover,.loop-node:focus-visible{opacity:.85;outline:none}
@@ -110,6 +113,10 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
     <div class="stat"><b>+12 / +8</b><span>points de QI en un an&nbsp;: « prometteurs » vs témoins</span></div>
     <div class="stat"><b>5–10&nbsp;%</b><span>des élèves réellement touchés, selon les synthèses récentes</span></div>
   </div>
+  <figure class="video">
+    <video id="explainer" src="explainer.mp4" poster="poster.jpg" controls preload="metadata" playsinline></video>
+    <figcaption>Vidéo explicative narrée (1 min 40) · l'essentiel de la fiche en 8 scènes.</figcaption>
+  </figure>
 </div></header>
 
 <nav aria-label="Sommaire"><div class="wrap">
@@ -481,14 +488,25 @@ function bindTip(fig, target, html) {
   }
 })();
 
-// Theme: follows the OS by default; the button overrides it.
+// Theme: follows the OS by default; the button overrides it. The video swaps to its matching light/dark render.
 const root = document.documentElement, darkQuery = matchMedia("(prefers-color-scheme: dark)");
 const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : darkQuery.matches;
+const video = document.getElementById("explainer");
+function syncVideo() {
+  const suffix = isDark() ? "" : "-light";
+  const src = `explainer${suffix}.mp4`;
+  if (video.getAttribute("src") === src) return;
+  const t = video.currentTime, playing = !video.paused;
+  video.setAttribute("poster", `poster${suffix}.jpg`);
+  video.setAttribute("src", src);
+  video.addEventListener("loadedmetadata", () => { video.currentTime = t; if (playing) video.play(); }, { once: true });
+}
 const themeBtn = document.getElementById("themeBtn");
 function syncTheme() {
   const dark = isDark();
   themeBtn.classList.toggle("is-dark", dark); // shows the sun in dark mode, the moon in light mode
   themeBtn.setAttribute("aria-label", dark ? "Passer en mode clair" : "Passer en mode sombre");
+  syncVideo();
 }
 darkQuery.addEventListener("change", syncTheme);
 themeBtn.addEventListener("click", () => {

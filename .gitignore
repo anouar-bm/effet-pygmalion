@@ -1,0 +1,8 @@
+node_modules/
+package*.json
+silent*.mp4
+preview-*.png
+shot-*.png
+cycle-*.png
+contact.png
+video/*.png
