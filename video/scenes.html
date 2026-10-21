@@ -58,15 +58,51 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
 
 <section class="scene" data-scene="mythe">
   <div class="label el" data-at="0">01 · <b>Origine</b></div>
-  <img class="el" data-at="0.02" src="../pygmalion-galatee.jpg" alt="" style="position:absolute;left:140px;top:120px;height:840px;border-radius:24px;border:2px solid var(--line)">
-  <div style="position:absolute;left:880px;right:140px;top:150px">
+  <svg class="el" data-at="0.8" viewBox="0 0 300 340" style="position:absolute;right:140px;top:150px;height:780px">
+  <rect width="300" height="340" rx="12" fill="var(--aff-soft)"/>
+  <path d="M20 300H280" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+  <!-- speech bubble -->
+  <path d="M110 28h142a14 14 0 0 1 14 14v24a14 14 0 0 1-14 14H136l-22 16 6-16h-10a14 14 0 0 1-14-14V42a14 14 0 0 1 14-14z" fill="var(--surface)" stroke="var(--aff)" stroke-width="2" stroke-linejoin="round"/>
+  <text x="181" y="60" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)" font-family="Inter,sans-serif">Tu vas y arriver !</text>
+  <!-- teacher -->
+  <path d="M44 300V214c0-26 16-42 36-42s36 16 36 42V300z" fill="var(--cog)"/>
+  <path d="M68 174l12 22 12-22z" fill="var(--surface)"/>
+  <rect x="74" y="150" width="12" height="18" fill="#e9b994"/>
+  <circle cx="80" cy="132" r="24" fill="#e9b994"/>
+  <path d="M56 130c0-16 10-26 24-26s24 10 24 24c-10-8-28-10-48 2z" fill="#5b3a29"/>
+  <circle cx="64" cy="108" r="10" fill="#5b3a29"/>
+  <circle cx="91" cy="132" r="2.6" fill="#2a2a2a"/>
+  <path d="M88 143q6 4 11-1" fill="none" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round"/>
+  <path d="M104 198q28 4 50-8" fill="none" stroke="var(--cog)" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="160" cy="187" r="7" fill="#e9b994"/>
+  <!-- gaze -->
+  <g fill="var(--aff)">
+    <path d="M128 112l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+    <path d="M158 128l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z"/>
+    <path d="M192 150l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+  </g>
+  <!-- pupil -->
+  <rect x="236" y="236" width="14" height="34" rx="5" fill="var(--aff)"/>
+  <path d="M200 300v-50c0-14 10-24 22-24s22 10 22 24v50z" fill="var(--acc)"/>
+  <circle cx="222" cy="206" r="18" fill="#c98e64"/>
+  <path d="M204 204c0-12 8-20 18-20s18 8 18 18c-8-6-22-8-36 2z" fill="#2b1d14"/>
+  <circle cx="214" cy="207" r="2.2" fill="#2a2a2a"/>
+  <path d="M211 215q5 4 9 0" fill="none" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round"/>
+  <!-- growth -->
+  <g stroke="var(--acc)" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M272 294V180" stroke-dasharray="6 7"/>
+    <path d="M262 190l10-12 10 12"/>
+  </g>
+  </svg>
+  <div style="position:absolute;left:140px;width:880px;top:150px">
     <h2 class="el" data-at="0.08">Pygmalion <span style="color:var(--muted);font-weight:500">&amp;</span> <span class="aff">Galatée</span></h2>
-    <p class="el" data-at="0.3" style="font-size:34px;color:var(--muted);margin-top:20px">Le sculpteur tombe amoureux de sa statue.<br>Aphrodite lui donne vie.</p>
-    <div class="el" data-at="0.52" style="margin-top:90px;display:flex;align-items:baseline;gap:30px">
+    <p class="el" data-at="0.2" style="font-size:34px;color:var(--muted);margin-top:20px">Le sculpteur tombe amoureux de sa statue.<br>Aphrodite lui donne vie.</p>
+    <div class="el" data-at="0.42" style="margin-top:90px;display:flex;align-items:baseline;gap:30px">
       <span class="serif cog" style="font-size:120px;font-weight:700">1948</span><span style="font-size:38px">Robert <b>Merton</b>, sociologue</span>
     </div>
-    <div class="el" data-at="0.66" data-anim="pop" style="margin-top:30px"><span class="chip aff">Prophétie autoréalisatrice</span></div>
-    <p class="el" data-at="0.84" style="font-size:36px;margin-top:44px">Une croyance, <b class="aff">même fausse</b>, peut finir par se réaliser.</p>
+    <div class="el" data-at="0.55" data-anim="pop" style="margin-top:30px"><span class="chip aff">Prophétie autoréalisatrice</span></div>
+    <p class="el" data-at="0.66" style="font-size:36px;margin-top:44px">Une croyance, <b class="aff">même fausse</b>, peut finir par se réaliser.</p>
+    <p class="el" data-at="0.8" style="font-size:40px;font-weight:600;margin-top:40px">À l'école&nbsp;: le <span class="acc">regard de l'enseignant</span> façonne l'élève.</p>
   </div>
 </section>
 
