@@ -115,7 +115,7 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
   </div>
   <figure class="video">
     <video id="explainer" src="explainer.mp4" poster="poster.jpg" controls preload="metadata" playsinline></video>
-    <figcaption>Vidéo explicative narrée (1 min 47) · l'essentiel de la fiche en 8 scènes.</figcaption>
+    <figcaption>Vidéo explicative narrée (2 min 45) · l'essentiel, les enjeux et 6 recommandations, avec un défi pour la semaine.</figcaption>
   </figure>
 </div></header>
 
@@ -523,25 +523,14 @@ function bindTip(fig, target, html) {
   }
 })();
 
-// Theme: follows the OS by default; the button overrides it. The video swaps to its matching light/dark render.
+// Theme: follows the OS by default; the button overrides it.
 const root = document.documentElement, darkQuery = matchMedia("(prefers-color-scheme: dark)");
 const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : darkQuery.matches;
-const video = document.getElementById("explainer");
-function syncVideo() {
-  const suffix = isDark() ? "" : "-light";
-  const src = `explainer${suffix}.mp4`;
-  if (video.getAttribute("src") === src) return;
-  const t = video.currentTime, playing = !video.paused;
-  video.setAttribute("poster", `poster${suffix}.jpg`);
-  video.setAttribute("src", src);
-  video.addEventListener("loadedmetadata", () => { video.currentTime = t; if (playing) video.play(); }, { once: true });
-}
 const themeBtn = document.getElementById("themeBtn");
 function syncTheme() {
   const dark = isDark();
   themeBtn.classList.toggle("is-dark", dark); // shows the sun in dark mode, the moon in light mode
   themeBtn.setAttribute("aria-label", dark ? "Passer en mode clair" : "Passer en mode sombre");
-  syncVideo();
 }
 darkQuery.addEventListener("change", syncTheme);
 themeBtn.addEventListener("click", () => {

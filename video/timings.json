@@ -1,7 +1,7 @@
 [
   {
     "id": "titre",
-    "duration": 4.040272
+    "duration": 4.086712
   },
   {
     "id": "mythe",
@@ -13,7 +13,7 @@
   },
   {
     "id": "resultats",
-    "duration": 11.377778
+    "duration": 13.606893
   },
   {
     "id": "cercle",
@@ -24,11 +24,19 @@
     "duration": 15.18585
   },
   {
+    "id": "enjeux",
+    "duration": 20.062041
+  },
+  {
     "id": "classe",
-    "duration": 9.287982
+    "duration": 29.396463
+  },
+  {
+    "id": "defi",
+    "duration": 11.331338
   },
   {
     "id": "fin",
-    "duration": 2.693515
+    "duration": 4.272472
   }
 ]
