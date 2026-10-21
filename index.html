@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'effet Pygmalion</title>
+<meta name="description" content="Fiche de préparation : l'effet Pygmalion — origine, expérience de Rosenthal et Jacobson, mécanismes, critiques scientifiques et pistes concrètes pour la classe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2; --surface:#ffffff; --ink:#1f2328; --muted:#5b6370; --line:#e6dfd3;
+  --cog:#2f6fb3; --cog-soft:#e3eefa; --aff:#c2553a; --aff-soft:#fbe7e0; --acc:#2e8b6e; --acc-soft:#dff2ea;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171b; --surface:#1d2026; --ink:#e9e6e1; --muted:#a3a9b3; --line:#2f333b;
+    --cog:#7fb0e6; --cog-soft:#1f2c3b; --aff:#ec8a6f; --aff-soft:#3a2520; --acc:#6cc9a6; --acc-soft:#1c3129;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171b; --surface:#1d2026; --ink:#e9e6e1; --muted:#a3a9b3; --line:#2f333b;
+  --cog:#7fb0e6; --cog-soft:#1f2c3b; --aff:#ec8a6f; --aff-soft:#3a2520; --acc:#6cc9a6; --acc-soft:#1c3129;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+header{padding:64px 0 32px;border-bottom:1px solid var(--line)}
+.kicker{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--aff);font-weight:600}
+h1{font-family:Fraunces,Georgia,serif;font-size:clamp(30px,5vw,48px);line-height:1.12;margin:12px 0 16px}
+h2{font-family:Fraunces,Georgia,serif;font-size:28px;margin:0 0 16px;display:flex;gap:12px;align-items:baseline}
+h2 .n{font-size:15px;color:var(--muted);font-family:Inter,sans-serif;font-weight:600}
+h3{font-size:17px;margin:0 0 6px}
+.lead{font-size:18px;color:var(--muted);max-width:680px}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:18px;overflow-x:auto;padding:12px 16px;font-size:14px}
+nav a{color:var(--muted);text-decoration:none;white-space:nowrap}
+nav a:hover{color:var(--ink)}
+section{padding:48px 0;border-bottom:1px solid var(--line)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;margin-bottom:8px}
+.t-cog{background:var(--cog-soft);color:var(--cog)}
+.t-aff{background:var(--aff-soft);color:var(--aff)}
+.t-acc{background:var(--acc-soft);color:var(--acc)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:24px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font-family:Fraunces,serif;font-size:30px;color:var(--aff)}
+.stat span{font-size:14px;color:var(--muted)}
+figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+figcaption{font-size:14px;color:var(--muted);margin-top:10px}
+svg text{font-family:Inter,sans-serif}
+.loop-node{cursor:pointer;transition:opacity .2s}
+.loop-node:hover,.loop-node:focus-visible{opacity:.85;outline:none}
+.loop-node.is-on rect{stroke-width:3}
+#loop-info{min-height:52px;margin-top:12px;padding:12px 14px;border-left:3px solid var(--aff);background:var(--aff-soft);border-radius:0 10px 10px 0;font-size:15px}
+.timeline{list-style:none;padding:0;margin:0;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 18px 22px}
+.timeline li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--aff)}
+.timeline b{font-family:Fraunces,serif}
+table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.table-wrap{overflow-x:auto}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--muted);margin:10px 0 0}
+ul.do li{margin-bottom:8px}
+.warn{font-size:14px;color:var(--muted);border:1px dashed var(--line);border-radius:10px;padding:12px 14px;margin-top:20px}
+blockquote{margin:20px 0 0;padding:14px 18px;border-left:3px solid var(--cog);background:var(--cog-soft);border-radius:0 10px 10px 0;font-family:Fraunces,serif;font-size:18px}
+a{color:var(--cog)}
+footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
+.theme-btn{position:fixed;right:16px;bottom:16px;width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:50%;cursor:pointer;box-shadow:0 2px 8px rgb(0 0 0 / .12)}
+.theme-btn:hover{border-color:var(--muted)}
+.theme-btn:focus-visible{outline:2px solid var(--cog);outline-offset:2px}
+.theme-btn .i-sun,.theme-btn.is-dark .i-moon{display:none}
+.theme-btn.is-dark .i-sun{display:block}
+@media print{nav,.theme-btn{display:none}section{padding:20px 0}details{break-inside:avoid}details>*{display:block}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <div class="kicker">Fiche de préparation · Psychologie de l'éducation</div>
+  <h1>L'effet Pygmalion&nbsp;: quand le regard de l'enseignant devient réalité</h1>
+  <p class="lead">Ce que l'on attend d'un élève peut, en partie, influencer ce qu'il devient. Origine du concept, expérience fondatrice, mécanismes, limites scientifiques et usages concrets en classe.</p>
+  <div class="stats">
+    <div class="stat"><b>1968</b><span>Rosenthal &amp; Jacobson, <i>Pygmalion in the Classroom</i></span></div>
+    <div class="stat"><b>20&nbsp;%</b><span>des élèves désignés « prometteurs »… au hasard</span></div>
+    <div class="stat"><b>+12 / +8</b><span>points de QI en un an&nbsp;: « prometteurs » vs témoins</span></div>
+    <div class="stat"><b>5–10&nbsp;%</b><span>des élèves réellement touchés, selon les synthèses récentes</span></div>
+  </div>
+</div></header>
+
+<nav aria-label="Sommaire"><div class="wrap">
+  <a href="#definition">Définition</a><a href="#experiences">Expériences</a><a href="#cercle">Le cercle</a><a href="#facteurs">4 facteurs</a><a href="#voisins">Effets voisins</a><a href="#critiques">Critiques</a><a href="#classe">En classe</a><a href="#questions">Questions</a><a href="#sources">Sources</a>
+</div></nav>
+
+<main>
+<section id="definition"><div class="wrap">
+  <h2><span class="n">01</span>Définition et origine</h2>
+  <p>L'<b>effet Pygmalion</b> (ou <b>effet Rosenthal</b>) désigne l'amélioration des performances d'une personne qui résulte des <b>attentes positives</b> d'une autre personne à son égard — typiquement un enseignant envers son élève, un manager envers un collaborateur. C'est un cas particulier de <b>prophétie autoréalisatrice</b>&nbsp;: une croyance, même fausse au départ, modifie les comportements de telle sorte qu'elle finit par se vérifier.</p>
+  <div class="grid" style="margin-top:20px">
+    <div class="card"><span class="tag t-aff">Le mythe</span><h3>Pygmalion, roi de Chypre</h3><p>Sculpteur, il tombe amoureux de la statue d'ivoire qu'il a créée, Galatée. Aphrodite lui donne vie (Ovide, <i>Métamorphoses</i>). L'image&nbsp;: on « façonne » l'autre selon l'idée qu'on s'en fait.</p></div>
+    <div class="card"><span class="tag t-cog">La sociologie</span><h3>Merton, 1948</h3><p>Robert K. Merton forge l'expression <i>self-fulfilling prophecy</i>. Exemple&nbsp;: une rumeur de faillite pousse les clients à retirer leur argent… et la banque, pourtant solide, fait réellement faillite.</p></div>
+    <div class="card"><span class="tag t-acc">La psychologie</span><h3>Rosenthal, années 1960</h3><p>Robert Rosenthal (Harvard) montre que les attentes d'un expérimentateur influencent les résultats de ses sujets, puis transpose l'hypothèse à l'école.</p></div>
+  </div>
+  <blockquote>« Si les hommes définissent des situations comme réelles, elles sont réelles dans leurs conséquences. » — Théorème de Thomas (1928)</blockquote>
+</div></section>
+
+<section id="experiences"><div class="wrap">
+  <h2><span class="n">02</span>Les expériences fondatrices</h2>
+  <ul class="timeline">
+    <li><b>1963 — Les rats « brillants »</b><br>Rosenthal et Fode confient à des étudiants des rats ordinaires, présentés comme « intelligents » ou « stupides ». Les rats prétendument brillants apprennent mieux le labyrinthe&nbsp;: les étudiants, sans le savoir, les manipulaient avec plus de soin.</li>
+    <li><b>1964–1965 — Oak School, San Francisco</b><br>École primaire publique d'un quartier populaire, avec de nombreux enfants d'origine mexicaine. Tous les élèves passent un test d'intelligence non verbal, présenté aux enseignants comme un test « d'éclosion intellectuelle » (Harvard Test of Inflected Acquisition).</li>
+    <li><b>La manipulation</b><br>Les chercheurs remettent aux enseignants une liste d'environ <b>20&nbsp;%</b> d'élèves censés connaître un « démarrage intellectuel » dans l'année. En réalité, ces noms ont été <b>tirés au sort</b>&nbsp;: aucune différence réelle avec les autres.</li>
+    <li><b>Résultats après un an</b><br>Les deux groupes progressent, mais les « prometteurs » gagnent en moyenne <b>≈&nbsp;12 points de QI</b> contre <b>≈&nbsp;8</b> pour le groupe témoin. L'écart est surtout marqué en <b>1<sup>re</sup> et 2<sup>e</sup> année</b> (≈&nbsp;15 et 10 points de différence), faible ou nul dans les classes plus âgées.</li>
+    <li><b>Après deux ans</b><br>Avec un nouvel enseignant, les plus jeunes perdent une partie de l'avantage&nbsp;; les plus âgés le conservent mieux.</li>
+  </ul>
+  <div class="grid" style="margin-top:12px">
+    <div class="card"><span class="tag t-aff">Observation troublante</span><p>Dans la section « lente », des élèves <b>du groupe témoin</b> qui progressaient malgré tout étaient jugés <b>plus défavorablement</b> par leurs enseignants&nbsp;: un progrès inattendu dérange.</p></div>
+    <div class="card"><span class="tag t-acc">Pas aux dépens des autres</span><p>Selon les auteurs, les enseignants n'ont pas passé plus de temps avec les « prometteurs »&nbsp;: c'est la <b>qualité</b> de l'interaction qui change, pas la quantité.</p></div>
+  </div>
+</div></section>
+
+<section id="cercle"><div class="wrap">
+  <h2><span class="n">03</span>Le cercle de la prophétie</h2>
+  <p>Cliquez sur une étape pour voir comment une simple croyance se transforme en résultat mesurable.</p>
+  <figure>
+    <svg viewBox="0 0 560 380" width="100%" role="group" aria-label="Cycle de l'effet Pygmalion en quatre étapes">
+      <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
+      <g fill="none" style="stroke:var(--muted)" stroke-width="2" marker-end="url(#arr)">
+        <path d="M360 62 Q 470 80 470 150"/>
+        <path d="M470 232 Q 470 300 360 318"/>
+        <path d="M200 318 Q 90 300 90 232"/>
+        <path d="M90 150 Q 90 80 200 62"/>
+      </g>
+      <g class="loop-node" tabindex="0" data-i="0"><rect x="190" y="30" width="180" height="64" rx="14" style="fill:var(--aff-soft);stroke:var(--aff)" stroke-width="1.5"/><text x="280" y="58" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">1. Attente</text><text x="280" y="78" text-anchor="middle" font-size="13" style="fill:var(--muted)">« Cet élève va réussir »</text></g>
+      <g class="loop-node" tabindex="0" data-i="1"><rect x="380" y="158" width="170" height="64" rx="14" style="fill:var(--cog-soft);stroke:var(--cog)" stroke-width="1.5"/><text x="465" y="186" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">2. Comportement</text><text x="465" y="206" text-anchor="middle" font-size="13" style="fill:var(--muted)">de l'enseignant</text></g>
+      <g class="loop-node" tabindex="0" data-i="2"><rect x="190" y="286" width="180" height="64" rx="14" style="fill:var(--acc-soft);stroke:var(--acc)" stroke-width="1.5"/><text x="280" y="314" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">3. Image de soi</text><text x="280" y="334" text-anchor="middle" font-size="13" style="fill:var(--muted)">et motivation de l'élève</text></g>
+      <g class="loop-node" tabindex="0" data-i="3"><rect x="10" y="158" width="170" height="64" rx="14" style="fill:var(--cog-soft);stroke:var(--cog)" stroke-width="1.5"/><text x="95" y="186" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">4. Performance</text><text x="95" y="206" text-anchor="middle" font-size="13" style="fill:var(--muted)">qui confirme l'attente</text></g>
+      <text x="280" y="196" text-anchor="middle" font-size="14" font-style="italic" style="fill:var(--muted)">la boucle se renforce</text>
+    </svg>
+    <div id="loop-info" aria-live="polite">Choisissez une étape du cercle.</div>
+    <figcaption>Le même cercle fonctionne à l'envers&nbsp;: des attentes basses produisent l'effet Golem.</figcaption>
+  </figure>
+</div></section>
+
+<section id="facteurs"><div class="wrap">
+  <h2><span class="n">04</span>Comment les attentes se transmettent&nbsp;: les 4 facteurs</h2>
+  <p>Rosenthal (1973) résume les canaux par lesquels un enseignant traite différemment les élèves dont il attend beaucoup&nbsp;:</p>
+  <div class="grid">
+    <div class="card"><span class="tag t-aff">Climat</span><h3>Chaleur socio-émotionnelle</h3><p>Plus de sourires, de contact visuel, de hochements de tête, une voix plus encourageante. C'est le facteur le plus puissant.</p></div>
+    <div class="card"><span class="tag t-cog">Feedback</span><h3>Retours plus riches</h3><p>Éloges plus fréquents et plus précis sur la réussite, corrections plus détaillées et constructives sur l'erreur.</p></div>
+    <div class="card"><span class="tag t-acc">Input</span><h3>Plus de contenu</h3><p>Des tâches plus ambitieuses, davantage de notions enseignées, des défis plus stimulants.</p></div>
+    <div class="card"><span class="tag t-aff">Output</span><h3>Plus d'occasions de répondre</h3><p>On les interroge plus souvent, on leur laisse plus de temps pour réfléchir, on reformule pour les aider.</p></div>
+  </div>
+  <p class="warn">Ces signaux sont souvent <b>non verbaux et involontaires</b>&nbsp;: l'enseignant de bonne foi ne s'en rend pas compte. D'où l'intérêt de s'observer (ou de se faire observer) en classe.</p>
+</div></section>
+
+<section id="voisins"><div class="wrap">
+  <h2><span class="n">05</span>Effets voisins et extensions</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Effet</th><th>Mécanisme</th><th>Exemple</th></tr></thead>
+    <tbody>
+      <tr><td><b>Pygmalion</b></td><td>Attentes élevées d'autrui → meilleure performance</td><td>Les « prometteurs » d'Oak School</td></tr>
+      <tr><td><b>Golem</b></td><td>Attentes faibles d'autrui → performance dégradée</td><td>Oz &amp; Eden (1994)&nbsp;: des chefs d'escouade à qui l'on explique qu'un mauvais score ne signifie pas incapacité font progresser leurs soldats faibles</td></tr>
+      <tr><td><b>Galatée</b></td><td>Attentes élevées de la personne envers <b>elle-même</b> (sentiment d'efficacité)</td><td>Eden &amp; Ravid (1982)&nbsp;: dire directement à des stagiaires qu'ils ont un fort potentiel améliore aussi leurs résultats</td></tr>
+      <tr><td><b>Management</b></td><td>Attentes du supérieur hiérarchique</td><td>Livingston (1969)&nbsp;; Eden &amp; Shani (1982)&nbsp;: instructeurs de l'armée israélienne et réussite des recrues</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="critiques"><div class="wrap">
+  <h2><span class="n">06</span>Critiques et nuances scientifiques</h2>
+  <p>L'effet existe, mais il est <b>bien plus modeste</b> que ce que la vulgarisation laisse croire. À connaître pour une présentation honnête&nbsp;:</p>
+  <div class="grid">
+    <div class="card"><span class="tag t-aff">Méthode</span><h3>Critiques dès 1968</h3><p>Thorndike, puis Elashoff &amp; Snow (<i>Pygmalion Reconsidered</i>, 1971) pointent un test peu fiable pour les jeunes enfants et des scores aberrants.</p></div>
+    <div class="card"><span class="tag t-cog">Réplications</span><h3>Un tiers de succès</h3><p>Sur des centaines de tentatives, seulement un peu plus d'un tiers trouvent un effet significatif. La méta-analyse de Rosenthal &amp; Rubin (1978, 345 études) confirme néanmoins que l'effet est réel.</p></div>
+    <div class="card"><span class="tag t-acc">Taille de l'effet</span><h3>Raudenbush, 1984</h3><p>Sur 18 expériences, l'effet sur le QI est faible (d&nbsp;≈&nbsp;0,11). Il n'apparaît que si l'enseignant <b>connaît peu</b> ses élèves au moment où on lui donne la fausse information (début d'année).</p></div>
+    <div class="card"><span class="tag t-aff">Synthèse</span><h3>Jussim &amp; Harber, 2005</h3><p>35 ans de recherche&nbsp;: effets réels mais petits (r&nbsp;≈&nbsp;0,1–0,2), qui ne s'accumulent pas avec le temps. Ils sont <b>plus forts chez les élèves de groupes stigmatisés</b> ou défavorisés.</p></div>
+  </div>
+  <p class="warn"><b>Point clé&nbsp;:</b> si les attentes des enseignants prédisent bien la réussite, c'est surtout parce qu'elles sont souvent <b>justes</b> (fondées sur ce qu'ils observent), et seulement en partie parce qu'elles sont autoréalisatrices. L'effet porte davantage sur les <b>résultats scolaires</b> et les interactions que sur le QI lui-même.</p>
+</div></section>
+
+<section id="classe"><div class="wrap">
+  <h2><span class="n">07</span>Applications concrètes en classe</h2>
+  <div class="grid">
+    <div class="card"><span class="tag t-acc">À faire</span>
+      <ul class="do">
+        <li>Afficher des attentes <b>élevées pour tous</b>&nbsp;: « je sais que tu peux y arriver ».</li>
+        <li>Varier les élèves interrogés (bâtonnets, tirage au sort) et laisser le même <b>temps de réflexion</b> à chacun.</li>
+        <li>Valoriser l'<b>effort et la stratégie</b> plutôt que le « don » (lien avec l'état d'esprit de croissance).</li>
+        <li>Donner un feedback précis et bienveillant, y compris aux élèves en difficulté.</li>
+        <li>Former des groupes <b>souples</b> et changeants, éviter les étiquettes durables.</li>
+      </ul>
+    </div>
+    <div class="card"><span class="tag t-aff">À éviter</span>
+      <ul class="do">
+        <li>Se fier au dossier, au nom de famille ou au frère aîné pour juger un élève avant de le connaître.</li>
+        <li>Les remarques figées&nbsp;: « il est nul en maths », « elle n'est pas faite pour ça ».</li>
+        <li>Les stéréotypes liés au genre, au milieu social, à la langue parlée à la maison.</li>
+        <li>Donner les tâches les plus riches toujours aux mêmes élèves.</li>
+        <li>Réagir négativement à un progrès inattendu.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="warn">Limite éthique&nbsp;: l'expérience reposait sur une tromperie des enseignants. En pratique, on ne « ment » pas aux élèves sur leurs capacités&nbsp;; on travaille plutôt sur sa propre vigilance et sur un climat où chacun peut progresser.</p>
+</div></section>
+
+<section id="questions"><div class="wrap">
+  <h2><span class="n">08</span>Questions pour s'entraîner</h2>
+  <details><summary>Pourquoi parle-t-on de « prophétie autoréalisatrice »&nbsp;?</summary><p>Parce que la croyance de départ (vraie ou fausse) modifie les comportements, qui produisent à leur tour la réalité annoncée. La prédiction provoque sa propre réalisation.</p></details>
+  <details><summary>Quelle était la ruse de l'expérience d'Oak School&nbsp;?</summary><p>Les élèves présentés comme « prometteurs » avaient été choisis au hasard. Seule la croyance des enseignants différait entre les deux groupes, ce qui permet d'attribuer l'écart final à leurs attentes.</p></details>
+  <details><summary>Pourquoi l'effet était-il plus fort chez les plus jeunes&nbsp;?</summary><p>Hypothèses avancées&nbsp;: les jeunes enfants sont plus malléables, ont une réputation moins établie dans l'école, et les enseignants les connaissent moins, donc la fausse information pèse davantage.</p></details>
+  <details><summary>Quelle différence entre effet Pygmalion, Golem et Galatée&nbsp;?</summary><p>Pygmalion&nbsp;: attentes positives d'autrui. Golem&nbsp;: attentes négatives d'autrui. Galatée&nbsp;: attentes que l'on a envers soi-même.</p></details>
+  <details><summary>L'effet Pygmalion est-il une loi universelle&nbsp;?</summary><p>Non. Les méta-analyses montrent un effet réel mais modeste, qui touche environ 5 à 10&nbsp;% des élèves, davantage chez ceux qui sont défavorisés ou stigmatisés, et surtout quand l'enseignant les connaît encore peu.</p></details>
+  <details><summary>Quel lien avec l'égalité des chances&nbsp;?</summary><p>Si les attentes basses touchent surtout les élèves de milieux défavorisés, l'effet Golem peut renforcer les inégalités. Prendre conscience de ses attentes est donc un levier d'équité.</p></details>
+</div></section>
+
+<section id="sources"><div class="wrap">
+  <h2><span class="n">09</span>Sources</h2>
+  <ul>
+    <li>Rosenthal, R. &amp; Jacobson, L. (1968). <i>Pygmalion in the Classroom</i>. Holt, Rinehart &amp; Winston. Trad. fr. <i>Pygmalion à l'école</i>, Casterman, 1971. <a href="https://classiques.uqam.ca/collection_methodologie/rosenthal_robert/propheties_autorealisatrices/propheties_texte.html">Extrait (Classiques des sciences sociales)</a></li>
+    <li>Merton, R. K. (1948). The self-fulfilling prophecy. <i>Antioch Review</i>, 8, 193–210.</li>
+    <li>Rosenthal, R. &amp; Rubin, D. B. (1978). Interpersonal expectancy effects: the first 345 studies. <i>Behavioral and Brain Sciences</i>, 3, 377–415.</li>
+    <li>Raudenbush, S. W. (1984). Magnitude of teacher expectancy effects on pupil IQ. <i>Journal of Educational Psychology</i>, 76, 85–97. <a href="https://gwern.net/doc/statistics/bias/1984-raudenbush.pdf">PDF</a></li>
+    <li>Jussim, L. &amp; Harber, K. D. (2005). Teacher expectations and self-fulfilling prophecies. <i>Personality and Social Psychology Review</i>, 9(2), 131–155. <a href="https://doi.org/10.1207/s15327957pspr0902_3">DOI</a></li>
+    <li>Eden, D. &amp; Shani, A. B. (1982). Pygmalion goes to boot camp. <i>Journal of Applied Psychology</i>, 67, 194–199. <a href="https://doi.org/10.1037/0021-9010.67.2.194">DOI</a></li>
+    <li>Oz, S. &amp; Eden, D. (1994). Restraining the Golem. <i>Journal of Applied Psychology</i>, 79, 744–754. <a href="https://doi.org/10.1037/0021-9010.79.5.744">DOI</a></li>
+    <li>Ambroise, G. (2003). Aux sources de l'effet Pygmalion. <i>Recherches &amp; éducations</i>. <a href="https://doi.org/10.4000/rechercheseducations.218">DOI</a></li>
+    <li>Lunca-Popa, I. &amp; Jaillet, A. (2012). Pygmalion dans le processus de transmission. <a href="https://shs.hal.science/halshs-00863848/document">HAL</a></li>
+  </ul>
+</div></section>
+</main>
+
+<footer><div class="wrap">Fiche de préparation personnelle · octobre 2026</div></footer>
+
+<button class="theme-btn" id="themeBtn" type="button" aria-label="Passer en mode sombre">
+  <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+</button>
+
+<script>
+// Cycle: clicking (or Enter on) a step shows its explanation.
+const steps = [
+  "<b>Attente.</b> L'enseignant se forme une idée de l'élève : test, dossier, première impression, stéréotype… À Oak School, une simple liste tirée au sort.",
+  "<b>Comportement.</b> Sans s'en rendre compte, il traite l'élève différemment : plus de chaleur, de retours, de contenus et d'occasions de répondre (les 4 facteurs).",
+  "<b>Image de soi.</b> L'élève perçoit ces signaux. Il se sent capable, s'investit davantage, ose participer et persévère face à la difficulté.",
+  "<b>Performance.</b> Ses résultats s'améliorent, ce qui confirme l'attente de départ de l'enseignant — et renforce la boucle."
+];
+const info = document.getElementById("loop-info");
+const nodes = document.querySelectorAll(".loop-node");
+function showStep(node) {
+  nodes.forEach(n => n.classList.toggle("is-on", n === node));
+  info.innerHTML = steps[node.dataset.i];
+}
+nodes.forEach(n => {
+  n.addEventListener("click", () => showStep(n));
+  n.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showStep(n); } });
+});
+
+// Theme: follows the OS by default; the button overrides it.
+const root = document.documentElement, darkQuery = matchMedia("(prefers-color-scheme: dark)");
+const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : darkQuery.matches;
+const themeBtn = document.getElementById("themeBtn");
+function syncTheme() {
+  const dark = isDark();
+  themeBtn.classList.toggle("is-dark", dark); // shows the sun in dark mode, the moon in light mode
+  themeBtn.setAttribute("aria-label", dark ? "Passer en mode clair" : "Passer en mode sombre");
+}
+darkQuery.addEventListener("change", syncTheme);
+themeBtn.addEventListener("click", () => {
+  root.dataset.theme = isDark() ? "light" : "dark";
+  syncTheme();
+});
+syncTheme();
+</script>
+</body>
+</html>
