@@ -2,7 +2,7 @@
 // usage: node render.mjs [--preview t1,t2,...] [--mux-only]
 //   --preview writes PNG stills instead of the video; --mux-only reuses silent.mp4 and only redoes the audio.
 import puppeteer from "puppeteer-core";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { spawn, execFileSync } from "node:child_process";
 
@@ -12,6 +12,30 @@ const FPS = 25, PAD = 0.7, TAIL = 0.9; // must match scenes.html
 const MUSIC_GAP_DB = -18.7, MUSIC_SPEECH_DB = -28.7, DUCK_IN = 0.4, DUCK_OUT = 0.8;
 const CHROME = process.env.CHROME || "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser";
 const timings = JSON.parse(await readFile(dir + "timings.json", "utf8"));
+const narration = JSON.parse(await readFile(dir + "narration.json", "utf8"));
+
+// Captions (../explainer.vtt): each sentence split into the fewest balanced lines of at most ~7 words / 42 chars,
+// timed from the ElevenLabs word timestamps in timings.json (written by tts.mjs).
+const vttTime = t => new Date(t * 1000).toISOString().slice(11, 23);
+const cues = [];
+let speech = 0;
+timings.forEach(s => {
+  if (!s.words?.length) throw new Error(`no word timestamps for scene ${s.id}: rerun tts.mjs`);
+  speech += PAD;
+  const sentences = [[]];
+  for (const w of s.words) { sentences.at(-1).push(w); if (/[.!?…]$/.test(w.w)) sentences.push([]); }
+  for (const sw of sentences.filter(x => x.length)) {
+    const k = Math.max(Math.ceil(sw.map(x => x.w).join(" ").length / 42), Math.ceil(sw.length / 7));
+    for (let j = 0; j < k; j++) {
+      const l = sw.slice(Math.round(j * sw.length / k), Math.round((j + 1) * sw.length / k));
+      cues.push(`${vttTime(speech + l[0].start)} --> ${vttTime(speech + l.at(-1).end)}\n${l.map(x => x.w).join(" ")}`);
+    }
+  }
+  speech += s.duration + TAIL;
+});
+await writeFile(`${dir}../explainer.vtt`, "WEBVTT\n\n" + cues.join("\n\n") + "\n");
+if (narration.length !== timings.length) throw new Error("narration.json and timings.json disagree: rerun tts.mjs");
+
 const themeIdx = process.argv.indexOf("--theme");
 const theme = themeIdx > -1 ? process.argv[themeIdx + 1] : "dark";
 if (!["dark", "light"].includes(theme)) throw new Error("--theme must be dark or light");

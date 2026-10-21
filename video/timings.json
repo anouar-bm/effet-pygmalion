@@ -1,42 +1,2067 @@
 [
   {
     "id": "titre",
-    "duration": 4.086712
+    "duration": 4.133152,
+    "words": [
+      {
+        "w": "L'effet",
+        "start": 0,
+        "end": 0.325
+      },
+      {
+        "w": "Pygmalion.",
+        "start": 0.36,
+        "end": 0.929
+      },
+      {
+        "w": "Et",
+        "start": 1.254,
+        "end": 1.37
+      },
+      {
+        "w": "si",
+        "start": 1.393,
+        "end": 1.509
+      },
+      {
+        "w": "votre",
+        "start": 1.556,
+        "end": 1.8
+      },
+      {
+        "w": "regard",
+        "start": 1.834,
+        "end": 2.136
+      },
+      {
+        "w": "pouvait",
+        "start": 2.159,
+        "end": 2.403
+      },
+      {
+        "w": "changer",
+        "start": 2.426,
+        "end": 2.728
+      },
+      {
+        "w": "l'avenir",
+        "start": 2.763,
+        "end": 3.216
+      },
+      {
+        "w": "d'un",
+        "start": 3.309,
+        "end": 3.448
+      },
+      {
+        "w": "élève",
+        "start": 3.529,
+        "end": 3.796
+      },
+      {
+        "w": "?",
+        "start": 3.889,
+        "end": 4.133
+      }
+    ]
   },
   {
     "id": "mythe",
-    "duration": 21.733878
+    "duration": 21.780317,
+    "words": [
+      {
+        "w": "Dans",
+        "start": 0,
+        "end": 0.197
+      },
+      {
+        "w": "la",
+        "start": 0.221,
+        "end": 0.267
+      },
+      {
+        "w": "mythologie",
+        "start": 0.325,
+        "end": 0.813
+      },
+      {
+        "w": "grecque,",
+        "start": 0.848,
+        "end": 1.277
+      },
+      {
+        "w": "Pygmalion,",
+        "start": 1.405,
+        "end": 2.09
+      },
+      {
+        "w": "roi",
+        "start": 2.241,
+        "end": 2.403
+      },
+      {
+        "w": "de",
+        "start": 2.45,
+        "end": 2.531
+      },
+      {
+        "w": "Chypre,",
+        "start": 2.577,
+        "end": 3.03
+      },
+      {
+        "w": "sculpte",
+        "start": 3.204,
+        "end": 3.587
+      },
+      {
+        "w": "une",
+        "start": 3.634,
+        "end": 3.738
+      },
+      {
+        "w": "statue,",
+        "start": 3.762,
+        "end": 4.296
+      },
+      {
+        "w": "Galatée,",
+        "start": 4.505,
+        "end": 5.155
+      },
+      {
+        "w": "et",
+        "start": 5.364,
+        "end": 5.48
+      },
+      {
+        "w": "en",
+        "start": 5.526,
+        "end": 5.596
+      },
+      {
+        "w": "tombe",
+        "start": 5.666,
+        "end": 5.933
+      },
+      {
+        "w": "amoureux.",
+        "start": 6.002,
+        "end": 6.571
+      },
+      {
+        "w": "Aphrodite",
+        "start": 6.954,
+        "end": 7.57
+      },
+      {
+        "w": "lui",
+        "start": 7.628,
+        "end": 7.779
+      },
+      {
+        "w": "donne",
+        "start": 7.825,
+        "end": 8.011
+      },
+      {
+        "w": "vie.",
+        "start": 8.057,
+        "end": 8.382
+      },
+      {
+        "w": "En",
+        "start": 8.707,
+        "end": 8.87
+      },
+      {
+        "w": "1948,",
+        "start": 8.928,
+        "end": 9.985
+      },
+      {
+        "w": "le",
+        "start": 10.031,
+        "end": 10.112
+      },
+      {
+        "w": "sociologue",
+        "start": 10.159,
+        "end": 10.67
+      },
+      {
+        "w": "Robert",
+        "start": 10.728,
+        "end": 11.029
+      },
+      {
+        "w": "Merton",
+        "start": 11.053,
+        "end": 11.529
+      },
+      {
+        "w": "parle",
+        "start": 11.773,
+        "end": 12.132
+      },
+      {
+        "w": "de",
+        "start": 12.167,
+        "end": 12.225
+      },
+      {
+        "w": "prophétie",
+        "start": 12.272,
+        "end": 12.748
+      },
+      {
+        "w": "autoréalisatrice",
+        "start": 12.783,
+        "end": 13.735
+      },
+      {
+        "w": ":",
+        "start": 13.827,
+        "end": 13.874
+      },
+      {
+        "w": "une",
+        "start": 14.199,
+        "end": 14.362
+      },
+      {
+        "w": "croyance,",
+        "start": 14.385,
+        "end": 15.035
+      },
+      {
+        "w": "même",
+        "start": 15.116,
+        "end": 15.348
+      },
+      {
+        "w": "fausse,",
+        "start": 15.395,
+        "end": 15.836
+      },
+      {
+        "w": "peut",
+        "start": 15.952,
+        "end": 16.114
+      },
+      {
+        "w": "finir",
+        "start": 16.138,
+        "end": 16.44
+      },
+      {
+        "w": "par",
+        "start": 16.486,
+        "end": 16.614
+      },
+      {
+        "w": "se",
+        "start": 16.66,
+        "end": 16.753
+      },
+      {
+        "w": "réaliser.",
+        "start": 16.799,
+        "end": 17.415
+      },
+      {
+        "w": "À",
+        "start": 17.659,
+        "end": 17.728
+      },
+      {
+        "w": "l'école,",
+        "start": 17.798,
+        "end": 18.297
+      },
+      {
+        "w": "c'est",
+        "start": 18.413,
+        "end": 18.611
+      },
+      {
+        "w": "le",
+        "start": 18.634,
+        "end": 18.68
+      },
+      {
+        "w": "regard",
+        "start": 18.75,
+        "end": 19.145
+      },
+      {
+        "w": "de",
+        "start": 19.226,
+        "end": 19.33
+      },
+      {
+        "w": "l'enseignant",
+        "start": 19.365,
+        "end": 19.888
+      },
+      {
+        "w": "qui",
+        "start": 20.062,
+        "end": 20.201
+      },
+      {
+        "w": "peut",
+        "start": 20.259,
+        "end": 20.433
+      },
+      {
+        "w": "façonner",
+        "start": 20.491,
+        "end": 20.944
+      },
+      {
+        "w": "l'élève.",
+        "start": 21.014,
+        "end": 21.78
+      }
+    ]
   },
   {
     "id": "experience",
-    "duration": 15.092971
+    "duration": 14.210612,
+    "words": [
+      {
+        "w": "En",
+        "start": 0,
+        "end": 0.139
+      },
+      {
+        "w": "1964,",
+        "start": 0.186,
+        "end": 1.254
+      },
+      {
+        "w": "à",
+        "start": 1.289,
+        "end": 1.324
+      },
+      {
+        "w": "Oak",
+        "start": 1.451,
+        "end": 1.591
+      },
+      {
+        "w": "School,",
+        "start": 1.66,
+        "end": 2.136
+      },
+      {
+        "w": "près",
+        "start": 2.31,
+        "end": 2.496
+      },
+      {
+        "w": "de",
+        "start": 2.519,
+        "end": 2.566
+      },
+      {
+        "w": "San",
+        "start": 2.612,
+        "end": 2.74
+      },
+      {
+        "w": "Francisco,",
+        "start": 2.798,
+        "end": 3.413
+      },
+      {
+        "w": "Rosenthal",
+        "start": 3.587,
+        "end": 4.11
+      },
+      {
+        "w": "et",
+        "start": 4.191,
+        "end": 4.249
+      },
+      {
+        "w": "Jacobson",
+        "start": 4.284,
+        "end": 4.748
+      },
+      {
+        "w": "font",
+        "start": 4.865,
+        "end": 5.05
+      },
+      {
+        "w": "passer",
+        "start": 5.085,
+        "end": 5.352
+      },
+      {
+        "w": "un",
+        "start": 5.387,
+        "end": 5.433
+      },
+      {
+        "w": "test",
+        "start": 5.492,
+        "end": 5.712
+      },
+      {
+        "w": "à",
+        "start": 5.759,
+        "end": 5.782
+      },
+      {
+        "w": "tous",
+        "start": 5.84,
+        "end": 5.968
+      },
+      {
+        "w": "les",
+        "start": 5.991,
+        "end": 6.095
+      },
+      {
+        "w": "élèves.",
+        "start": 6.153,
+        "end": 6.513
+      },
+      {
+        "w": "Puis",
+        "start": 6.722,
+        "end": 7.094
+      },
+      {
+        "w": "ils",
+        "start": 7.21,
+        "end": 7.396
+      },
+      {
+        "w": "donnent",
+        "start": 7.419,
+        "end": 7.639
+      },
+      {
+        "w": "aux",
+        "start": 7.697,
+        "end": 7.767
+      },
+      {
+        "w": "enseignants",
+        "start": 7.837,
+        "end": 8.278
+      },
+      {
+        "w": "une",
+        "start": 8.324,
+        "end": 8.498
+      },
+      {
+        "w": "liste",
+        "start": 8.545,
+        "end": 8.789
+      },
+      {
+        "w": "d'élèves,",
+        "start": 8.847,
+        "end": 9.311
+      },
+      {
+        "w": "dits",
+        "start": 9.485,
+        "end": 9.718
+      },
+      {
+        "w": "prometteurs.",
+        "start": 9.787,
+        "end": 10.461
+      },
+      {
+        "w": "En",
+        "start": 10.786,
+        "end": 10.948
+      },
+      {
+        "w": "réalité,",
+        "start": 11.006,
+        "end": 11.645
+      },
+      {
+        "w": "ces",
+        "start": 11.761,
+        "end": 11.912
+      },
+      {
+        "w": "vingt",
+        "start": 11.947,
+        "end": 12.109
+      },
+      {
+        "w": "pour",
+        "start": 12.132,
+        "end": 12.26
+      },
+      {
+        "w": "cent",
+        "start": 12.318,
+        "end": 12.527
+      },
+      {
+        "w": "ont",
+        "start": 12.574,
+        "end": 12.736
+      },
+      {
+        "w": "été",
+        "start": 12.794,
+        "end": 12.957
+      },
+      {
+        "w": "tirés",
+        "start": 13.003,
+        "end": 13.375
+      },
+      {
+        "w": "au",
+        "start": 13.398,
+        "end": 13.549
+      },
+      {
+        "w": "sort.",
+        "start": 13.595,
+        "end": 14.211
+      }
+    ]
   },
   {
     "id": "resultats",
-    "duration": 13.606893
+    "duration": 13.653333,
+    "words": [
+      {
+        "w": "Un",
+        "start": 0,
+        "end": 0.174
+      },
+      {
+        "w": "an",
+        "start": 0.244,
+        "end": 0.29
+      },
+      {
+        "w": "plus",
+        "start": 0.337,
+        "end": 0.488
+      },
+      {
+        "w": "tard,",
+        "start": 0.511,
+        "end": 0.882
+      },
+      {
+        "w": "les",
+        "start": 1.033,
+        "end": 1.149
+      },
+      {
+        "w": "élèves",
+        "start": 1.207,
+        "end": 1.416
+      },
+      {
+        "w": "prometteurs",
+        "start": 1.44,
+        "end": 1.927
+      },
+      {
+        "w": "ont",
+        "start": 1.95,
+        "end": 2.09
+      },
+      {
+        "w": "gagné",
+        "start": 2.113,
+        "end": 2.345
+      },
+      {
+        "w": "douze",
+        "start": 2.403,
+        "end": 2.647
+      },
+      {
+        "w": "points",
+        "start": 2.694,
+        "end": 2.902
+      },
+      {
+        "w": "de",
+        "start": 2.926,
+        "end": 2.995
+      },
+      {
+        "w": "QI,",
+        "start": 3.053,
+        "end": 3.448
+      },
+      {
+        "w": "contre",
+        "start": 3.564,
+        "end": 3.855
+      },
+      {
+        "w": "huit",
+        "start": 3.889,
+        "end": 4.11
+      },
+      {
+        "w": "pour",
+        "start": 4.18,
+        "end": 4.296
+      },
+      {
+        "w": "les",
+        "start": 4.331,
+        "end": 4.435
+      },
+      {
+        "w": "autres.",
+        "start": 4.505,
+        "end": 4.807
+      },
+      {
+        "w": "L'écart",
+        "start": 5.132,
+        "end": 5.515
+      },
+      {
+        "w": "est",
+        "start": 5.561,
+        "end": 5.677
+      },
+      {
+        "w": "surtout",
+        "start": 5.7,
+        "end": 6.002
+      },
+      {
+        "w": "fort",
+        "start": 6.037,
+        "end": 6.304
+      },
+      {
+        "w": "chez",
+        "start": 6.351,
+        "end": 6.502
+      },
+      {
+        "w": "les",
+        "start": 6.525,
+        "end": 6.606
+      },
+      {
+        "w": "plus",
+        "start": 6.641,
+        "end": 6.792
+      },
+      {
+        "w": "petits",
+        "start": 6.815,
+        "end": 7.175
+      },
+      {
+        "w": ":",
+        "start": 7.21,
+        "end": 7.245
+      },
+      {
+        "w": "quinze",
+        "start": 7.488,
+        "end": 7.755
+      },
+      {
+        "w": "points",
+        "start": 7.802,
+        "end": 8.011
+      },
+      {
+        "w": "en",
+        "start": 8.046,
+        "end": 8.139
+      },
+      {
+        "w": "première",
+        "start": 8.185,
+        "end": 8.533
+      },
+      {
+        "w": "année,",
+        "start": 8.557,
+        "end": 8.951
+      },
+      {
+        "w": "neuf",
+        "start": 9.125,
+        "end": 9.392
+      },
+      {
+        "w": "en",
+        "start": 9.509,
+        "end": 9.648
+      },
+      {
+        "w": "deuxième.",
+        "start": 9.718,
+        "end": 10.205
+      },
+      {
+        "w": "Rien",
+        "start": 10.588,
+        "end": 10.844
+      },
+      {
+        "w": "n'avait",
+        "start": 10.867,
+        "end": 11.088
+      },
+      {
+        "w": "changé,",
+        "start": 11.111,
+        "end": 11.645
+      },
+      {
+        "w": "sauf",
+        "start": 11.819,
+        "end": 12.074
+      },
+      {
+        "w": "le",
+        "start": 12.19,
+        "end": 12.283
+      },
+      {
+        "w": "regard",
+        "start": 12.341,
+        "end": 12.655
+      },
+      {
+        "w": "porté",
+        "start": 12.69,
+        "end": 12.968
+      },
+      {
+        "w": "sur",
+        "start": 13.015,
+        "end": 13.201
+      },
+      {
+        "w": "eux.",
+        "start": 13.224,
+        "end": 13.653
+      }
+    ]
   },
   {
     "id": "cercle",
-    "duration": 13.931973
+    "duration": 15.18585,
+    "words": [
+      {
+        "w": "Comment",
+        "start": 0,
+        "end": 0.348
+      },
+      {
+        "w": "l'expliquer",
+        "start": 0.383,
+        "end": 0.917
+      },
+      {
+        "w": "?",
+        "start": 1.033,
+        "end": 1.103
+      },
+      {
+        "w": "L'enseignant",
+        "start": 1.544,
+        "end": 2.032
+      },
+      {
+        "w": "attend",
+        "start": 2.078,
+        "end": 2.357
+      },
+      {
+        "w": "davantage",
+        "start": 2.38,
+        "end": 2.81
+      },
+      {
+        "w": "de",
+        "start": 2.833,
+        "end": 2.902
+      },
+      {
+        "w": "l'élève.",
+        "start": 2.949,
+        "end": 3.379
+      },
+      {
+        "w": "Sans",
+        "start": 3.622,
+        "end": 3.855
+      },
+      {
+        "w": "s'en",
+        "start": 3.878,
+        "end": 4.017
+      },
+      {
+        "w": "rendre",
+        "start": 4.063,
+        "end": 4.365
+      },
+      {
+        "w": "compte,",
+        "start": 4.423,
+        "end": 4.807
+      },
+      {
+        "w": "il",
+        "start": 4.923,
+        "end": 5.074
+      },
+      {
+        "w": "lui",
+        "start": 5.12,
+        "end": 5.248
+      },
+      {
+        "w": "sourit",
+        "start": 5.294,
+        "end": 5.608
+      },
+      {
+        "w": "plus,",
+        "start": 5.642,
+        "end": 6.177
+      },
+      {
+        "w": "l'interroge",
+        "start": 6.327,
+        "end": 6.885
+      },
+      {
+        "w": "plus,",
+        "start": 6.92,
+        "end": 7.396
+      },
+      {
+        "w": "l'encourage.",
+        "start": 7.57,
+        "end": 8.44
+      },
+      {
+        "w": "L'élève",
+        "start": 8.615,
+        "end": 9.067
+      },
+      {
+        "w": "se",
+        "start": 9.183,
+        "end": 9.346
+      },
+      {
+        "w": "sent",
+        "start": 9.404,
+        "end": 9.683
+      },
+      {
+        "w": "capable,",
+        "start": 9.799,
+        "end": 10.484
+      },
+      {
+        "w": "s'investit,",
+        "start": 10.658,
+        "end": 11.505
+      },
+      {
+        "w": "et",
+        "start": 11.656,
+        "end": 11.796
+      },
+      {
+        "w": "progresse.",
+        "start": 11.831,
+        "end": 12.527
+      },
+      {
+        "w": "Ce",
+        "start": 12.701,
+        "end": 12.852
+      },
+      {
+        "w": "qui",
+        "start": 12.899,
+        "end": 13.003
+      },
+      {
+        "w": "confirme",
+        "start": 13.061,
+        "end": 13.595
+      },
+      {
+        "w": "l'attente",
+        "start": 13.665,
+        "end": 14.222
+      },
+      {
+        "w": "de",
+        "start": 14.292,
+        "end": 14.42
+      },
+      {
+        "w": "départ.",
+        "start": 14.466,
+        "end": 15.186
+      }
+    ]
   },
   {
     "id": "nuances",
-    "duration": 15.18585
+    "duration": 15.60381,
+    "words": [
+      {
+        "w": "Mais",
+        "start": 0,
+        "end": 0.372
+      },
+      {
+        "w": "attention.",
+        "start": 0.43,
+        "end": 1.091
+      },
+      {
+        "w": "Les",
+        "start": 1.335,
+        "end": 1.463
+      },
+      {
+        "w": "recherches",
+        "start": 1.498,
+        "end": 1.927
+      },
+      {
+        "w": "suivantes",
+        "start": 1.95,
+        "end": 2.357
+      },
+      {
+        "w": "montrent",
+        "start": 2.403,
+        "end": 2.705
+      },
+      {
+        "w": "un",
+        "start": 2.786,
+        "end": 2.844
+      },
+      {
+        "w": "effet",
+        "start": 2.926,
+        "end": 3.193
+      },
+      {
+        "w": "réel,",
+        "start": 3.309,
+        "end": 3.913
+      },
+      {
+        "w": "mais",
+        "start": 4.087,
+        "end": 4.261
+      },
+      {
+        "w": "modeste",
+        "start": 4.331,
+        "end": 4.911
+      },
+      {
+        "w": ":",
+        "start": 4.934,
+        "end": 4.957
+      },
+      {
+        "w": "environ",
+        "start": 5.074,
+        "end": 5.526
+      },
+      {
+        "w": "cinq",
+        "start": 5.573,
+        "end": 5.828
+      },
+      {
+        "w": "à",
+        "start": 5.909,
+        "end": 5.944
+      },
+      {
+        "w": "dix",
+        "start": 6.014,
+        "end": 6.2
+      },
+      {
+        "w": "élèves",
+        "start": 6.258,
+        "end": 6.653
+      },
+      {
+        "w": "sur",
+        "start": 6.769,
+        "end": 7.024
+      },
+      {
+        "w": "cent.",
+        "start": 7.07,
+        "end": 7.361
+      },
+      {
+        "w": "Il",
+        "start": 7.535,
+        "end": 7.697
+      },
+      {
+        "w": "est",
+        "start": 7.755,
+        "end": 7.825
+      },
+      {
+        "w": "plus",
+        "start": 7.906,
+        "end": 8.139
+      },
+      {
+        "w": "fort",
+        "start": 8.173,
+        "end": 8.464
+      },
+      {
+        "w": "chez",
+        "start": 8.51,
+        "end": 8.684
+      },
+      {
+        "w": "les",
+        "start": 8.707,
+        "end": 8.812
+      },
+      {
+        "w": "élèves",
+        "start": 8.882,
+        "end": 9.16
+      },
+      {
+        "w": "défavorisés.",
+        "start": 9.183,
+        "end": 9.973
+      },
+      {
+        "w": "Et",
+        "start": 10.182,
+        "end": 10.333
+      },
+      {
+        "w": "à",
+        "start": 10.379,
+        "end": 10.403
+      },
+      {
+        "w": "l'inverse,",
+        "start": 10.449,
+        "end": 11.053
+      },
+      {
+        "w": "des",
+        "start": 11.204,
+        "end": 11.331
+      },
+      {
+        "w": "attentes",
+        "start": 11.389,
+        "end": 11.738
+      },
+      {
+        "w": "basses",
+        "start": 11.761,
+        "end": 12.098
+      },
+      {
+        "w": "peuvent",
+        "start": 12.307,
+        "end": 12.608
+      },
+      {
+        "w": "freiner",
+        "start": 12.632,
+        "end": 12.922
+      },
+      {
+        "w": "un",
+        "start": 12.98,
+        "end": 13.073
+      },
+      {
+        "w": "élève",
+        "start": 13.154,
+        "end": 13.514
+      },
+      {
+        "w": ":",
+        "start": 13.584,
+        "end": 13.63
+      },
+      {
+        "w": "c'est",
+        "start": 13.839,
+        "end": 14.036
+      },
+      {
+        "w": "l'effet",
+        "start": 14.06,
+        "end": 14.501
+      },
+      {
+        "w": "Golem.",
+        "start": 14.675,
+        "end": 15.604
+      }
+    ]
   },
   {
     "id": "enjeux",
-    "duration": 20.062041
+    "duration": 22.105397,
+    "words": [
+      {
+        "w": "Pourquoi",
+        "start": 0,
+        "end": 0.383
+      },
+      {
+        "w": "est-ce",
+        "start": 0.43,
+        "end": 0.615
+      },
+      {
+        "w": "si",
+        "start": 0.662,
+        "end": 0.778
+      },
+      {
+        "w": "important",
+        "start": 0.836,
+        "end": 1.312
+      },
+      {
+        "w": "?",
+        "start": 1.428,
+        "end": 1.451
+      },
+      {
+        "w": "Parce",
+        "start": 1.66,
+        "end": 1.904
+      },
+      {
+        "w": "que",
+        "start": 1.927,
+        "end": 2.02
+      },
+      {
+        "w": "nos",
+        "start": 2.067,
+        "end": 2.183
+      },
+      {
+        "w": "attentes",
+        "start": 2.241,
+        "end": 2.624
+      },
+      {
+        "w": "ne",
+        "start": 2.659,
+        "end": 2.752
+      },
+      {
+        "w": "sont",
+        "start": 2.798,
+        "end": 2.961
+      },
+      {
+        "w": "jamais",
+        "start": 3.042,
+        "end": 3.355
+      },
+      {
+        "w": "neutres.",
+        "start": 3.471,
+        "end": 3.936
+      },
+      {
+        "w": "Sans",
+        "start": 4.18,
+        "end": 4.377
+      },
+      {
+        "w": "le",
+        "start": 4.423,
+        "end": 4.493
+      },
+      {
+        "w": "vouloir,",
+        "start": 4.551,
+        "end": 5.027
+      },
+      {
+        "w": "elles",
+        "start": 5.062,
+        "end": 5.248
+      },
+      {
+        "w": "peuvent",
+        "start": 5.271,
+        "end": 5.584
+      },
+      {
+        "w": "dépendre",
+        "start": 5.759,
+        "end": 6.246
+      },
+      {
+        "w": "du",
+        "start": 6.293,
+        "end": 6.385
+      },
+      {
+        "w": "milieu",
+        "start": 6.444,
+        "end": 6.687
+      },
+      {
+        "w": "social,",
+        "start": 6.734,
+        "end": 7.314
+      },
+      {
+        "w": "du",
+        "start": 7.488,
+        "end": 7.605
+      },
+      {
+        "w": "genre,",
+        "start": 7.663,
+        "end": 8.173
+      },
+      {
+        "w": "du",
+        "start": 8.324,
+        "end": 8.452
+      },
+      {
+        "w": "comportement,",
+        "start": 8.51,
+        "end": 9.3
+      },
+      {
+        "w": "ou",
+        "start": 9.474,
+        "end": 9.59
+      },
+      {
+        "w": "même",
+        "start": 9.636,
+        "end": 9.915
+      },
+      {
+        "w": "du",
+        "start": 9.95,
+        "end": 10.089
+      },
+      {
+        "w": "prénom",
+        "start": 10.147,
+        "end": 10.484
+      },
+      {
+        "w": "d'un",
+        "start": 10.577,
+        "end": 10.716
+      },
+      {
+        "w": "élève.",
+        "start": 10.797,
+        "end": 11.297
+      },
+      {
+        "w": "Or",
+        "start": 11.622,
+        "end": 11.923
+      },
+      {
+        "w": "un",
+        "start": 12.04,
+        "end": 12.19
+      },
+      {
+        "w": "enfant",
+        "start": 12.26,
+        "end": 12.539
+      },
+      {
+        "w": "qui",
+        "start": 12.632,
+        "end": 12.748
+      },
+      {
+        "w": "se",
+        "start": 12.794,
+        "end": 12.899
+      },
+      {
+        "w": "sent",
+        "start": 12.957,
+        "end": 13.154
+      },
+      {
+        "w": "jugé",
+        "start": 13.27,
+        "end": 13.676
+      },
+      {
+        "w": "incapable",
+        "start": 13.746,
+        "end": 14.431
+      },
+      {
+        "w": "perd",
+        "start": 14.605,
+        "end": 14.837
+      },
+      {
+        "w": "confiance,",
+        "start": 14.86,
+        "end": 15.487
+      },
+      {
+        "w": "et",
+        "start": 15.638,
+        "end": 15.754
+      },
+      {
+        "w": "finit",
+        "start": 15.789,
+        "end": 16.056
+      },
+      {
+        "w": "par",
+        "start": 16.079,
+        "end": 16.195
+      },
+      {
+        "w": "décrocher.",
+        "start": 16.23,
+        "end": 16.788
+      },
+      {
+        "w": "L'enjeu,",
+        "start": 17.113,
+        "end": 17.658
+      },
+      {
+        "w": "c'est",
+        "start": 17.809,
+        "end": 17.995
+      },
+      {
+        "w": "l'équité",
+        "start": 18.03,
+        "end": 18.506
+      },
+      {
+        "w": ":",
+        "start": 18.622,
+        "end": 18.657
+      },
+      {
+        "w": "que",
+        "start": 18.901,
+        "end": 19.028
+      },
+      {
+        "w": "chaque",
+        "start": 19.063,
+        "end": 19.319
+      },
+      {
+        "w": "enfant",
+        "start": 19.342,
+        "end": 19.644
+      },
+      {
+        "w": "ait",
+        "start": 19.713,
+        "end": 19.829
+      },
+      {
+        "w": "la",
+        "start": 19.864,
+        "end": 19.934
+      },
+      {
+        "w": "même",
+        "start": 19.992,
+        "end": 20.178
+      },
+      {
+        "w": "chance",
+        "start": 20.201,
+        "end": 20.503
+      },
+      {
+        "w": "d'être",
+        "start": 20.572,
+        "end": 20.863
+      },
+      {
+        "w": "cru",
+        "start": 20.909,
+        "end": 21.176
+      },
+      {
+        "w": "capable.",
+        "start": 21.257,
+        "end": 22.105
+      }
+    ]
   },
   {
     "id": "classe",
-    "duration": 29.396463
+    "duration": 27.724626,
+    "words": [
+      {
+        "w": "Alors,",
+        "start": 0,
+        "end": 0.488
+      },
+      {
+        "w": "concrètement,",
+        "start": 0.546,
+        "end": 1.207
+      },
+      {
+        "w": "que",
+        "start": 1.3,
+        "end": 1.451
+      },
+      {
+        "w": "faire",
+        "start": 1.498,
+        "end": 1.811
+      },
+      {
+        "w": "?",
+        "start": 1.892,
+        "end": 1.95
+      },
+      {
+        "w": "Un",
+        "start": 2.159,
+        "end": 2.334
+      },
+      {
+        "w": ":",
+        "start": 2.45,
+        "end": 2.508
+      },
+      {
+        "w": "des",
+        "start": 2.717,
+        "end": 2.833
+      },
+      {
+        "w": "attentes",
+        "start": 2.902,
+        "end": 3.181
+      },
+      {
+        "w": "élevées",
+        "start": 3.216,
+        "end": 3.576
+      },
+      {
+        "w": "pour",
+        "start": 3.611,
+        "end": 3.738
+      },
+      {
+        "w": "tous,",
+        "start": 3.796,
+        "end": 4.191
+      },
+      {
+        "w": "et",
+        "start": 4.238,
+        "end": 4.354
+      },
+      {
+        "w": "dites-le",
+        "start": 4.4,
+        "end": 4.795
+      },
+      {
+        "w": ":",
+        "start": 4.911,
+        "end": 4.946
+      },
+      {
+        "w": "je",
+        "start": 5.097,
+        "end": 5.224
+      },
+      {
+        "w": "sais",
+        "start": 5.283,
+        "end": 5.48
+      },
+      {
+        "w": "que",
+        "start": 5.561,
+        "end": 5.666
+      },
+      {
+        "w": "tu",
+        "start": 5.7,
+        "end": 5.782
+      },
+      {
+        "w": "peux",
+        "start": 5.84,
+        "end": 5.979
+      },
+      {
+        "w": "y",
+        "start": 6.049,
+        "end": 6.072
+      },
+      {
+        "w": "arriver.",
+        "start": 6.107,
+        "end": 6.594
+      },
+      {
+        "w": "Deux",
+        "start": 6.978,
+        "end": 7.198
+      },
+      {
+        "w": ":",
+        "start": 7.314,
+        "end": 7.361
+      },
+      {
+        "w": "interrogez",
+        "start": 7.686,
+        "end": 8.197
+      },
+      {
+        "w": "chaque",
+        "start": 8.22,
+        "end": 8.464
+      },
+      {
+        "w": "élève,",
+        "start": 8.487,
+        "end": 8.928
+      },
+      {
+        "w": "et",
+        "start": 9.044,
+        "end": 9.137
+      },
+      {
+        "w": "laissez-lui",
+        "start": 9.172,
+        "end": 9.543
+      },
+      {
+        "w": "trois",
+        "start": 9.59,
+        "end": 9.799
+      },
+      {
+        "w": "secondes",
+        "start": 9.822,
+        "end": 10.252
+      },
+      {
+        "w": "pour",
+        "start": 10.286,
+        "end": 10.449
+      },
+      {
+        "w": "réfléchir.",
+        "start": 10.472,
+        "end": 11.134
+      },
+      {
+        "w": "Trois",
+        "start": 11.459,
+        "end": 11.784
+      },
+      {
+        "w": ":",
+        "start": 11.9,
+        "end": 11.947
+      },
+      {
+        "w": "valorisez",
+        "start": 12.156,
+        "end": 12.655
+      },
+      {
+        "w": "l'effort",
+        "start": 12.701,
+        "end": 13.131
+      },
+      {
+        "w": "et",
+        "start": 13.166,
+        "end": 13.259
+      },
+      {
+        "w": "les",
+        "start": 13.282,
+        "end": 13.375
+      },
+      {
+        "w": "stratégies,",
+        "start": 13.398,
+        "end": 13.99
+      },
+      {
+        "w": "pas",
+        "start": 14.164,
+        "end": 14.327
+      },
+      {
+        "w": "le",
+        "start": 14.362,
+        "end": 14.432
+      },
+      {
+        "w": "don.",
+        "start": 14.478,
+        "end": 14.768
+      },
+      {
+        "w": "Quatre",
+        "start": 15.279,
+        "end": 15.72
+      },
+      {
+        "w": ":",
+        "start": 15.755,
+        "end": 15.778
+      },
+      {
+        "w": "préférez",
+        "start": 15.952,
+        "end": 16.382
+      },
+      {
+        "w": "des",
+        "start": 16.428,
+        "end": 16.51
+      },
+      {
+        "w": "groupes",
+        "start": 16.533,
+        "end": 16.881
+      },
+      {
+        "w": "souples",
+        "start": 16.904,
+        "end": 17.288
+      },
+      {
+        "w": "aux",
+        "start": 17.311,
+        "end": 17.427
+      },
+      {
+        "w": "groupes",
+        "start": 17.45,
+        "end": 17.694
+      },
+      {
+        "w": "de",
+        "start": 17.717,
+        "end": 17.764
+      },
+      {
+        "w": "niveau",
+        "start": 17.81,
+        "end": 18.031
+      },
+      {
+        "w": "figés.",
+        "start": 18.077,
+        "end": 18.553
+      },
+      {
+        "w": "Cinq",
+        "start": 18.936,
+        "end": 19.261
+      },
+      {
+        "w": ":",
+        "start": 19.435,
+        "end": 19.493
+      },
+      {
+        "w": "donnez",
+        "start": 19.702,
+        "end": 20.004
+      },
+      {
+        "w": "un",
+        "start": 20.028,
+        "end": 20.074
+      },
+      {
+        "w": "retour",
+        "start": 20.109,
+        "end": 20.364
+      },
+      {
+        "w": "précis,",
+        "start": 20.411,
+        "end": 20.921
+      },
+      {
+        "w": "qui",
+        "start": 21.072,
+        "end": 21.212
+      },
+      {
+        "w": "montre",
+        "start": 21.258,
+        "end": 21.537
+      },
+      {
+        "w": "comment",
+        "start": 21.583,
+        "end": 21.85
+      },
+      {
+        "w": "progresser.",
+        "start": 21.873,
+        "end": 22.524
+      },
+      {
+        "w": "Six",
+        "start": 22.907,
+        "end": 23.209
+      },
+      {
+        "w": ":",
+        "start": 23.383,
+        "end": 23.406
+      },
+      {
+        "w": "observez-vous",
+        "start": 23.557,
+        "end": 24.219
+      },
+      {
+        "w": ":",
+        "start": 24.3,
+        "end": 24.335
+      },
+      {
+        "w": "qui",
+        "start": 24.613,
+        "end": 24.753
+      },
+      {
+        "w": "j'interroge,",
+        "start": 24.799,
+        "end": 25.507
+      },
+      {
+        "w": "qui",
+        "start": 25.658,
+        "end": 25.786
+      },
+      {
+        "w": "j'encourage,",
+        "start": 25.832,
+        "end": 26.587
+      },
+      {
+        "w": "et",
+        "start": 26.68,
+        "end": 26.831
+      },
+      {
+        "w": "qui",
+        "start": 26.889,
+        "end": 27.005
+      },
+      {
+        "w": "j'oublie",
+        "start": 27.052,
+        "end": 27.423
+      },
+      {
+        "w": "?",
+        "start": 27.458,
+        "end": 27.725
+      }
+    ]
   },
   {
     "id": "defi",
-    "duration": 11.331338
+    "duration": 11.470658,
+    "words": [
+      {
+        "w": "Voici",
+        "start": 0,
+        "end": 0.313
+      },
+      {
+        "w": "votre",
+        "start": 0.372,
+        "end": 0.639
+      },
+      {
+        "w": "défi",
+        "start": 0.685,
+        "end": 0.998
+      },
+      {
+        "w": "pour",
+        "start": 1.068,
+        "end": 1.196
+      },
+      {
+        "w": "cette",
+        "start": 1.231,
+        "end": 1.405
+      },
+      {
+        "w": "semaine.",
+        "start": 1.428,
+        "end": 1.858
+      },
+      {
+        "w": "Choisissez",
+        "start": 2.136,
+        "end": 2.624
+      },
+      {
+        "w": "un",
+        "start": 2.67,
+        "end": 2.74
+      },
+      {
+        "w": "élève",
+        "start": 2.833,
+        "end": 3.204
+      },
+      {
+        "w": "que",
+        "start": 3.251,
+        "end": 3.367
+      },
+      {
+        "w": "vous",
+        "start": 3.402,
+        "end": 3.518
+      },
+      {
+        "w": "remarquez",
+        "start": 3.541,
+        "end": 3.947
+      },
+      {
+        "w": "peu.",
+        "start": 3.982,
+        "end": 4.272
+      },
+      {
+        "w": "Chaque",
+        "start": 4.516,
+        "end": 4.783
+      },
+      {
+        "w": "jour,",
+        "start": 4.818,
+        "end": 5.166
+      },
+      {
+        "w": "un",
+        "start": 5.248,
+        "end": 5.375
+      },
+      {
+        "w": "regard,",
+        "start": 5.433,
+        "end": 5.968
+      },
+      {
+        "w": "un",
+        "start": 6.142,
+        "end": 6.269
+      },
+      {
+        "w": "encouragement",
+        "start": 6.339,
+        "end": 6.908
+      },
+      {
+        "w": "sincère,",
+        "start": 6.943,
+        "end": 7.477
+      },
+      {
+        "w": "une",
+        "start": 7.686,
+        "end": 7.814
+      },
+      {
+        "w": "question",
+        "start": 7.848,
+        "end": 8.255
+      },
+      {
+        "w": "rien",
+        "start": 8.371,
+        "end": 8.58
+      },
+      {
+        "w": "que",
+        "start": 8.626,
+        "end": 8.719
+      },
+      {
+        "w": "pour",
+        "start": 8.754,
+        "end": 8.882
+      },
+      {
+        "w": "lui.",
+        "start": 8.928,
+        "end": 9.218
+      },
+      {
+        "w": "Et",
+        "start": 9.543,
+        "end": 9.694
+      },
+      {
+        "w": "observez",
+        "start": 9.741,
+        "end": 10.286
+      },
+      {
+        "w": "ce",
+        "start": 10.437,
+        "end": 10.588
+      },
+      {
+        "w": "qui",
+        "start": 10.658,
+        "end": 10.786
+      },
+      {
+        "w": "change.",
+        "start": 10.832,
+        "end": 11.471
+      }
+    ]
   },
   {
     "id": "fin",
-    "duration": 4.272472
+    "duration": 4.411791,
+    "words": [
+      {
+        "w": "Chaque",
+        "start": 0,
+        "end": 0.302
+      },
+      {
+        "w": "élève",
+        "start": 0.325,
+        "end": 0.615
+      },
+      {
+        "w": "mérite",
+        "start": 0.673,
+        "end": 1.033
+      },
+      {
+        "w": "quelqu'un",
+        "start": 1.068,
+        "end": 1.37
+      },
+      {
+        "w": "qui",
+        "start": 1.428,
+        "end": 1.521
+      },
+      {
+        "w": "croit",
+        "start": 1.567,
+        "end": 1.811
+      },
+      {
+        "w": "en",
+        "start": 1.846,
+        "end": 1.892
+      },
+      {
+        "w": "lui.",
+        "start": 1.939,
+        "end": 2.218
+      },
+      {
+        "w": "Ce",
+        "start": 2.461,
+        "end": 2.612
+      },
+      {
+        "w": "quelqu'un,",
+        "start": 2.659,
+        "end": 3.123
+      },
+      {
+        "w": "c'est",
+        "start": 3.216,
+        "end": 3.39
+      },
+      {
+        "w": "peut-être",
+        "start": 3.413,
+        "end": 3.82
+      },
+      {
+        "w": "vous.",
+        "start": 3.889,
+        "end": 4.412
+      }
+    ]
   }
 ]

@@ -39,20 +39,23 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
 .vbar{width:150px;border-radius:12px 12px 0 0;transform-origin:50% 100%;position:relative}
 .vbar span{position:absolute;top:-58px;left:0;right:0;text-align:center;font-size:40px;font-weight:700;color:var(--ink)}
 .group-label{position:absolute;bottom:-70px;left:0;right:0;text-align:center;font-size:34px;font-weight:600}
-.legend{display:flex;gap:40px;font-size:30px;color:var(--muted);margin-top:18px}
-.legend i{display:inline-block;width:26px;height:26px;border-radius:6px;margin-right:12px;vertical-align:-3px}
 .waffle{display:grid;grid-template-columns:repeat(10,52px);gap:16px}
 .waffle div{width:52px;height:52px;border-radius:50%;background:var(--grid)}
 .icon{width:96px;height:96px;margin-bottom:22px}
 .tags{display:flex;flex-wrap:wrap;gap:22px}
+.art{position:absolute;top:0;bottom:0;height:1080px;object-fit:cover;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 30%);mask-image:linear-gradient(to right,transparent 0,#000 30%)}
+.art.top{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 30%),linear-gradient(#000 65%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 30%),linear-gradient(#000 65%,transparent);mask-composite:intersect}
+.flow{display:flex;align-items:baseline;gap:20px;font-size:48px}
+.flow i{font-style:normal;color:var(--muted)}
+.flow small{font-size:28px;font-style:italic}
 .tags .chip{margin:0}
 .reco{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
 .reco .card{position:relative;padding:30px 36px}
-.reco .icon{width:72px;height:72px;margin-bottom:14px}
-.reco h3{font-size:38px}
+.reco .icon{width:120px;height:120px;margin-bottom:18px}
+.reco h3{font-size:38px;white-space:nowrap}
 .reco p{font-size:28px}
 .num{position:absolute;top:26px;right:32px;font-style:normal;font-family:Fraunces,serif;font-size:56px;font-weight:700;color:var(--line)}
-.week{position:absolute;left:140px;right:140px;bottom:110px;display:flex;gap:40px;align-items:flex-end}
+.week{position:absolute;left:140px;right:140px;bottom:90px;display:flex;gap:40px;align-items:flex-end}
 .day{flex:1;display:flex;flex-direction:column;align-items:center;gap:14px}
 .day .vbar{width:100%;background:var(--acc)}
 .day b{font-size:40px}
@@ -71,51 +74,15 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
 
 <section class="scene" data-scene="mythe">
   <div class="label el" data-at="0">01 · <b>Origine</b></div>
-  <svg class="el" data-at="0.8" viewBox="0 0 300 340" style="position:absolute;right:140px;top:150px;height:780px">
-  <rect width="300" height="340" rx="12" fill="var(--aff-soft)"/>
-  <path d="M20 300H280" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" opacity=".5"/>
-  <!-- speech bubble -->
-  <path d="M110 28h142a14 14 0 0 1 14 14v24a14 14 0 0 1-14 14H136l-22 16 6-16h-10a14 14 0 0 1-14-14V42a14 14 0 0 1 14-14z" fill="var(--surface)" stroke="var(--aff)" stroke-width="2" stroke-linejoin="round"/>
-  <text x="181" y="60" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)" font-family="Inter,sans-serif">Tu vas y arriver !</text>
-  <!-- teacher -->
-  <path d="M44 300V214c0-26 16-42 36-42s36 16 36 42V300z" fill="var(--cog)"/>
-  <path d="M68 174l12 22 12-22z" fill="var(--surface)"/>
-  <rect x="74" y="150" width="12" height="18" fill="#e9b994"/>
-  <circle cx="80" cy="132" r="24" fill="#e9b994"/>
-  <path d="M56 130c0-16 10-26 24-26s24 10 24 24c-10-8-28-10-48 2z" fill="#5b3a29"/>
-  <circle cx="64" cy="108" r="10" fill="#5b3a29"/>
-  <circle cx="91" cy="132" r="2.6" fill="#2a2a2a"/>
-  <path d="M88 143q6 4 11-1" fill="none" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round"/>
-  <path d="M104 198q28 4 50-8" fill="none" stroke="var(--cog)" stroke-width="14" stroke-linecap="round"/>
-  <circle cx="160" cy="187" r="7" fill="#e9b994"/>
-  <!-- gaze -->
-  <g fill="var(--aff)">
-    <path d="M128 112l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
-    <path d="M158 128l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z"/>
-    <path d="M192 150l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
-  </g>
-  <!-- pupil -->
-  <rect x="236" y="236" width="14" height="34" rx="5" fill="var(--aff)"/>
-  <path d="M200 300v-50c0-14 10-24 22-24s22 10 22 24v50z" fill="var(--acc)"/>
-  <circle cx="222" cy="206" r="18" fill="#c98e64"/>
-  <path d="M204 204c0-12 8-20 18-20s18 8 18 18c-8-6-22-8-36 2z" fill="#2b1d14"/>
-  <circle cx="214" cy="207" r="2.2" fill="#2a2a2a"/>
-  <path d="M211 215q5 4 9 0" fill="none" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round"/>
-  <!-- growth -->
-  <g stroke="var(--acc)" stroke-width="3" stroke-linecap="round" fill="none">
-    <path d="M272 294V180" stroke-dasharray="6 7"/>
-    <path d="M262 190l10-12 10 12"/>
-  </g>
-  </svg>
-  <div style="position:absolute;left:140px;width:880px;top:150px">
+  <img class="el art" data-at="0" src="img/mythe.jpg" alt="" style="right:0;width:1060px">
+  <div style="position:absolute;left:140px;width:760px;top:150px">
     <h2 class="el" data-at="0.08">Pygmalion <span style="color:var(--muted);font-weight:500">&amp;</span> <span class="aff">Galatée</span></h2>
-    <p class="el" data-at="0.2" style="font-size:34px;color:var(--muted);margin-top:20px">Le sculpteur tombe amoureux de sa statue.<br>Aphrodite lui donne vie.</p>
-    <div class="el" data-at="0.42" style="margin-top:90px;display:flex;align-items:baseline;gap:30px">
+    <div class="el" data-w="1948" style="margin-top:90px;display:flex;align-items:baseline;gap:30px">
       <span class="serif cog" style="font-size:120px;font-weight:700">1948</span><span style="font-size:38px">Robert <b>Merton</b>, sociologue</span>
     </div>
-    <div class="el" data-at="0.55" data-anim="pop" style="margin-top:30px"><span class="chip aff">Prophétie autoréalisatrice</span></div>
-    <p class="el" data-at="0.66" style="font-size:36px;margin-top:44px">Une croyance, <b class="aff">même fausse</b>, peut finir par se réaliser.</p>
-    <p class="el" data-at="0.8" style="font-size:40px;font-weight:600;margin-top:40px">À l'école&nbsp;: le <span class="acc">regard de l'enseignant</span> façonne l'élève.</p>
+    <div class="el" data-w="prophétie" data-anim="pop" style="margin-top:30px"><span class="chip aff">Prophétie autoréalisatrice</span></div>
+    <div class="flow el" data-w="croyance" style="margin-top:56px"><b>Croyance</b><small class="aff">même fausse</small><i>→</i><b class="acc">Réalité</b></div>
+    <div class="flow el" data-w="regard" style="margin-top:30px"><b class="cog">Regard</b><i>→</i><b class="acc">Élève</b></div>
   </div>
 </section>
 
@@ -143,8 +110,7 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
 
 <section class="scene" data-scene="resultats">
   <div class="label el" data-at="0">03 · <b>Résultats après un an</b></div>
-  <h2 class="el" data-at="0" style="margin-top:20px">Gain de <span class="aff">QI</span></h2>
-  <div class="legend el" data-at="0.05"><span><i style="background:var(--s-exp)"></i>« Prometteurs »</span><span><i style="background:var(--s-ctl)"></i>Autres élèves</span></div>
+  <h2 class="el" data-at="0" style="margin-top:20px;font-size:60px">Gain de QI&nbsp;: <span style="color:var(--s-exp)">« prometteurs »</span> <span style="color:var(--muted);font-weight:500">vs</span> <span style="color:var(--s-ctl)">autres</span></h2>
   <div class="bars">
     <div class="group"><div class="vbar sel-bar" data-at="0.15" data-v="12.2" style="background:var(--s-exp)"><span>+12</span></div><div class="vbar sel-bar" data-at="0.3" data-v="8.4" style="background:var(--s-ctl)"><span>+8</span></div><div class="group-label el" data-at="0.15">Toute l'école</div></div>
     <div class="group"><div class="vbar sel-bar" data-at="0.62" data-v="27.4" style="background:var(--s-exp)"><span>+27</span></div><div class="vbar sel-bar" data-at="0.62" data-v="12" style="background:var(--s-ctl)"><span>+12</span></div><div class="group-label el" data-at="0.62">1<sup>re</sup> année <b class="aff">· écart 15</b></div></div>
@@ -187,25 +153,20 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
 </section>
 
 <section class="scene" data-scene="enjeux">
+  <img class="el art" data-at="0" src="img/enjeux.jpg" alt="" style="right:0;width:1160px;object-position:80% 50%">
   <div class="label el" data-at="0">06 · <b>Les enjeux</b></div>
-  <h2 class="el" data-at="0.06" style="margin-top:20px">Nos attentes ne sont <span class="aff">jamais neutres</span></h2>
-  <div class="row" style="margin-top:70px;align-items:flex-start">
-    <div style="flex:1.1">
-      <p class="el" data-at="0.24" style="font-size:34px;color:var(--muted);margin-bottom:30px">Sans le vouloir, elles peuvent dépendre…</p>
-      <div class="tags">
-        <span class="chip cog el" data-at="0.34" data-anim="pop">du milieu social</span>
-        <span class="chip cog el" data-at="0.4" data-anim="pop">du genre</span>
-        <span class="chip cog el" data-at="0.45" data-anim="pop">du comportement</span>
-        <span class="chip cog el" data-at="0.5" data-anim="pop">du prénom</span>
-      </div>
-    </div>
-    <div style="flex:1">
-      <div class="card el" data-at="0.6" style="border-color:var(--bad)"><h3 class="bad">Confiance perdue</h3><p>« je suis nul, ça ne sert à rien »</p></div>
-      <div class="card el" data-at="0.68" style="margin-top:26px;border-color:var(--bad)"><h3 class="bad">Décrochage</h3><p>l'élève abandonne, peu à peu</p></div>
-    </div>
+  <h2 class="el" data-at="0.06" style="margin-top:20px;width:820px">Nos attentes ne sont <span class="aff">jamais neutres</span></h2>
+  <div class="tags" style="width:760px;margin-top:60px">
+    <span class="chip cog el" data-w="social" data-anim="pop">milieu social</span>
+    <span class="chip cog el" data-w="genre" data-anim="pop">genre</span>
+    <span class="chip cog el" data-w="comportement" data-anim="pop">comportement</span>
+    <span class="chip cog el" data-w="prénom" data-anim="pop">prénom</span>
   </div>
-  <div class="el" data-at="0.78" data-anim="pop" style="position:absolute;left:140px;right:140px;bottom:90px;text-align:center;font-size:46px;font-weight:600;padding:30px;border-radius:28px;background:var(--acc-soft);border:2px solid var(--acc)">
-    L'enjeu&nbsp;: <span class="acc">l'équité</span>, que chaque enfant soit <span class="acc">cru capable</span>
+  <div class="flow" style="margin-top:60px">
+    <b class="bad el" data-w="confiance">Confiance perdue</b><i class="el" data-w="décrocher">→</i><b class="bad el" data-w="décrocher">Décrochage</b>
+  </div>
+  <div class="el" data-w="équité" data-anim="pop" style="position:absolute;left:140px;width:760px;bottom:110px;font-size:46px;font-weight:600;padding:28px 36px;border-radius:28px;background:var(--acc-soft);border:2px solid var(--acc)">
+    L'enjeu&nbsp;: <span class="acc">l'équité</span>
   </div>
 </section>
 
@@ -213,24 +174,24 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
   <div class="label el" data-at="0">07 · <b>Recommandations</b></div>
   <h2 class="el" data-at="0" style="margin-top:20px">Concrètement, <span class="acc">que faire&nbsp;?</span></h2>
   <div class="reco" style="margin-top:56px">
-    <div class="card el" data-at="0.06"><i class="num">1</i>
+    <div class="card el" data-w="Un"><i class="num">1</i>
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--aff)" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="var(--aff)"/></svg>
-      <h3>Attentes élevées</h3><p>et le dire&nbsp;: « je sais que tu peux y arriver »</p></div>
-    <div class="card el" data-at="0.26"><i class="num">2</i>
+      <h3>Attentes élevées</h3></div>
+    <div class="card el" data-w="Deux"><i class="num">2</i>
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--cog)" stroke-width="1.6" stroke-linejoin="round"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>
-      <h3>Interroger chacun</h3><p>et laisser 3 secondes pour réfléchir</p></div>
-    <div class="card el" data-at="0.43"><i class="num">3</i>
+      <h3>Interroger chacun <span class="cog">· 3 s</span></h3></div>
+    <div class="card el" data-w="Trois"><i class="num">3</i>
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-linejoin="round"><path d="M3 20h5v-5h5v-5h5V5h3"/><path d="M15 3h6v6"/></svg>
-      <h3>Valoriser l'effort</h3><p>et les stratégies, pas le « don »</p></div>
-    <div class="card el" data-at="0.56"><i class="num">4</i>
+      <h3>L'effort, pas le don</h3></div>
+    <div class="card el" data-w="Quatre"><i class="num">4</i>
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--cog)" stroke-width="1.6"><circle cx="7" cy="8" r="2.5"/><circle cx="17" cy="8" r="2.5"/><circle cx="12" cy="15" r="2.5"/><path d="M9 9.5l2 4M15 9.5l-2 4M9.5 8h5"/></svg>
-      <h3>Groupes souples</h3><p>plutôt que des groupes de niveau figés</p></div>
-    <div class="card el" data-at="0.7"><i class="num">5</i>
+      <h3>Groupes souples</h3></div>
+    <div class="card el" data-w="Cinq"><i class="num">5</i>
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 9l2 2 4-4M8 16h8"/></svg>
-      <h3>Retour précis</h3><p>qui montre comment progresser</p></div>
-    <div class="card el" data-at="0.83"><i class="num">6</i>
+      <h3>Retour précis</h3></div>
+    <div class="card el" data-w="Six"><i class="num">6</i>
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--aff)" stroke-width="1.6"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
-      <h3>S'observer</h3><p>qui j'interroge, qui j'encourage, qui j'oublie&nbsp;?</p></div>
+      <h3>Qui j'oublie&nbsp;?</h3></div>
   </div>
 </section>
 
@@ -245,7 +206,8 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
     <div class="day"><div class="vbar sel-bar" data-at="0.66" data-px="240"></div><b class="el" data-at="0.66">Jeu</b><span class="el" data-at="0.66">un sourire</span></div>
     <div class="day"><div class="vbar sel-bar" data-at="0.74" data-px="310"></div><b class="el" data-at="0.74">Ven</b><span class="el" data-at="0.74">un progrès&nbsp;!</span></div>
   </div>
-  <p class="el serif" data-at="0.85" style="position:absolute;right:140px;top:170px;font-size:52px;font-style:italic">Et observez <span class="acc">ce qui change.</span></p>
+  <p class="el serif" data-w="observez" style="font-size:52px;font-style:italic;margin-top:40px">Et observez <span class="acc">ce qui change.</span></p>
+  <img class="el art top" data-at="0" src="img/defi.jpg" alt="" style="right:0;width:960px;height:640px;bottom:auto">
 </section>
 
 <section class="scene" data-scene="fin">
@@ -292,10 +254,17 @@ function build(timings) {
     const len = PAD + s.duration + (last ? END_HOLD : TAIL);
     const start = t, speech = t + PAD;
     const at = f => speech + f * s.duration - 0.25;
+    // data-w="mot": reveal just before the first spoken word that starts with it (case, punctuation and elision ignored).
+    const norm = w => w.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+    const atWord = w => {
+      const hit = s.words.find(x => norm(x.w.split(/['’]/).pop()).startsWith(norm(w))); // "l'équité" matches "équité"
+      if (!hit) throw new Error(`scene ${s.id}: word "${w}" not spoken`);
+      return speech + hit.start - 0.25;
+    };
     seq.push([scene, { opacity: [0, 1] }, { at: start, duration: FADE }]);
     if (!last) seq.push([scene, { opacity: [1, 0] }, { at: start + len - FADE/2, duration: FADE }]);
     scene.querySelectorAll(".el, .sel").forEach(el => {
-      const when = at(parseFloat(el.dataset.at));
+      const when = el.dataset.w ? atWord(el.dataset.w) : at(parseFloat(el.dataset.at));
       const anim = el.dataset.anim;
       if (el instanceof SVGElement && anim !== "draw") el.setAttribute("opacity", 0);
       if (anim === "draw") {
@@ -308,6 +277,7 @@ function build(timings) {
         seq.push([el, { opacity: [0, 1], y: [40, 0] }, { at: when, duration: 0.7, ease }]);
       }
     });
+    scene.querySelectorAll(".art").forEach(img => seq.push([img, { scale: [1, 1.06] }, { at: start, duration: len, ease: "linear" }])); // slow push so stills never freeze
     scene.querySelectorAll(".sel-bar").forEach(b => {
       b.style.height = (b.dataset.px ?? parseFloat(b.dataset.v) / BAR_MAX * BAR_PX) + "px"; // data-px: fixed height, data-v: IQ gain
       b.style.transform = "scaleY(0)";
