@@ -40,8 +40,9 @@ h2{font-family:Fraunces,serif;font-weight:700;font-size:68px;line-height:1.1}
 .vbar{width:150px;border-radius:12px 12px 0 0;transform-origin:50% 100%;position:relative}
 .vbar span{position:absolute;top:-58px;left:0;right:0;text-align:center;font-size:40px;font-weight:700;color:var(--ink)}
 .group-label{position:absolute;bottom:-70px;left:0;right:0;text-align:center;font-size:34px;font-weight:600}
-.waffle{display:grid;grid-template-columns:repeat(10,52px);gap:16px}
-.waffle div{width:52px;height:52px;border-radius:50%;background:var(--grid)}
+.waffle{display:grid;grid-template-columns:repeat(10,52px);gap:10px 16px}
+.waffle div{width:52px;height:58px;color:var(--grid)}
+.waffle svg{width:100%;height:100%;display:block}
 .icon{width:96px;height:96px;margin-bottom:22px}
 .tags{display:flex;flex-wrap:wrap;gap:22px}
 .art{position:absolute;top:0;bottom:0;height:1080px;object-fit:cover;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 30%);mask-image:linear-gradient(to right,transparent 0,#000 30%)}
@@ -244,7 +245,11 @@ function buildPupils() {
 
 function buildWaffle() {
   const box = document.getElementById("waffle");
-  return Array.from({ length: 100 }, () => box.appendChild(document.createElement("div")));
+  return Array.from({ length: 100 }, () => {
+    const d = box.appendChild(document.createElement("div"));
+    d.innerHTML = '<svg viewBox="0 0 28 31" fill="currentColor"><circle cx="14" cy="8" r="7"/><path d="M2 31v-5c0-6 5-10 12-10s12 4 12 10v5z"/></svg>'; // same pupil silhouette as the experiment scene
+    return d;
+  });
 }
 
 function build(timings) {
@@ -294,8 +299,8 @@ function build(timings) {
     });
     if (s.id === "experience") chosen.forEach((d, i) => seq.push([d, { color: accent, scale: [1, 1.25, 1] }, { at: at(0.78) + i * 0.08, duration: 0.5 }]));
     if (s.id === "nuances") {
-      waffle.slice(0, 5).forEach((d, i) => seq.push([d, { backgroundColor: accent, scale: [1, 1.3, 1] }, { at: at(0.3) + i * 0.1, duration: 0.5 }]));
-      waffle.slice(5, 10).forEach((d, i) => seq.push([d, { backgroundColor: accent, opacity: 0.45 }, { at: at(0.4) + i * 0.1, duration: 0.5 }]));
+      waffle.slice(0, 5).forEach((d, i) => seq.push([d, { color: accent, scale: [1, 1.3, 1] }, { at: at(0.3) + i * 0.1, duration: 0.5 }]));
+      waffle.slice(5, 10).forEach((d, i) => seq.push([d, { color: accent, opacity: 0.45 }, { at: at(0.4) + i * 0.1, duration: 0.5 }]));
     }
     t += len;
   });

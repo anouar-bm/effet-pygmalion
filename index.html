@@ -98,6 +98,14 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
 .tip.on{opacity:1}
 .chart details{margin:12px 0 0;padding:10px 14px}
 .chart details table{margin-top:10px}
+.reco{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:14px}
+.reco .card{display:flex;gap:14px;align-items:flex-start}
+.reco img{width:76px;height:76px;border-radius:14px;flex:none}
+.reco h3{margin-top:0}
+.defi{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:center;margin-top:20px;background:var(--acc-soft);border:1px solid var(--acc);border-radius:16px;padding:16px}
+.defi img{width:100%;height:auto;border-radius:10px;display:block}
+.defi ul{list-style:none;padding:0;margin:10px 0 0}
+.defi li{margin:4px 0}
 @media print{nav,.theme-btn{display:none}section{padding:20px 0}details{break-inside:avoid}details>*{display:block}}
 </style>
 </head>
@@ -287,17 +295,16 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
 </div></section>
 
 <section id="classe"><div class="wrap">
-  <h2><span class="n">07</span>Applications concrètes en classe</h2>
+  <h2><span class="n">07</span>Recommandations en classe</h2>
+  <div class="reco">
+    <div class="card"><img src="video/img/reco-1.jpg" alt=""><div><h3>1. Attentes élevées pour tous</h3><p>Le dire clairement : « je sais que tu peux y arriver », y compris aux élèves en difficulté.</p></div></div>
+    <div class="card"><img src="video/img/reco-2.jpg" alt=""><div><h3>2. Interroger chacun, 3 secondes</h3><p>Varier les élèves interrogés (bâtonnets, tirage au sort) et laisser à chacun le même temps de réflexion.</p></div></div>
+    <div class="card"><img src="video/img/reco-3.jpg" alt=""><div><h3>3. L'effort, pas le don</h3><p>Valoriser l'effort et la stratégie plutôt que le « don » (état d'esprit de croissance).</p></div></div>
+    <div class="card"><img src="video/img/reco-4.jpg" alt=""><div><h3>4. Groupes souples</h3><p>Des groupes qui changent selon les tâches, plutôt que des groupes de niveau figés et des étiquettes durables.</p></div></div>
+    <div class="card"><img src="video/img/reco-5.jpg" alt=""><div><h3>5. Retour précis</h3><p>Un feedback précis et bienveillant, qui montre ce qui est réussi et comment progresser.</p></div></div>
+    <div class="card"><img src="video/img/reco-6.jpg" alt=""><div><h3>6. Qui j'oublie ?</h3><p>S'observer : qui j'interroge, qui j'encourage, à qui je donne les tâches riches, et qui j'oublie.</p></div></div>
+  </div>
   <div class="grid">
-    <div class="card"><span class="tag t-acc">À faire</span>
-      <ul class="do">
-        <li>Afficher des attentes <b>élevées pour tous</b>&nbsp;: « je sais que tu peux y arriver ».</li>
-        <li>Varier les élèves interrogés (bâtonnets, tirage au sort) et laisser le même <b>temps de réflexion</b> à chacun.</li>
-        <li>Valoriser l'<b>effort et la stratégie</b> plutôt que le « don » (lien avec l'état d'esprit de croissance).</li>
-        <li>Donner un feedback précis et bienveillant, y compris aux élèves en difficulté.</li>
-        <li>Former des groupes <b>souples</b> et changeants, éviter les étiquettes durables.</li>
-      </ul>
-    </div>
     <div class="card"><span class="tag t-aff">À éviter</span>
       <ul class="do">
         <li>Se fier au dossier, au nom de famille ou au frère aîné pour juger un élève avant de le connaître.</li>
@@ -305,6 +312,21 @@ footer{padding:32px 0 64px;font-size:14px;color:var(--muted)}
         <li>Les stéréotypes liés au genre, au milieu social, à la langue parlée à la maison.</li>
         <li>Donner les tâches les plus riches toujours aux mêmes élèves.</li>
         <li>Réagir négativement à un progrès inattendu.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="defi">
+    <img src="video/img/defi.jpg" alt="Illustration : une enseignante encourage une élève timide à son pupitre." width="1536" height="1024" loading="lazy">
+    <div>
+      <span class="tag t-acc">Votre défi</span>
+      <h3>Un élève, une semaine</h3>
+      <p style="margin:0">Choisissez un élève que vous remarquez peu. Chaque jour, un geste rien que pour lui, puis observez ce qui change.</p>
+      <ul>
+        <li><label><input type="checkbox"> Lundi : un regard</label></li>
+        <li><label><input type="checkbox"> Mardi : un encouragement sincère</label></li>
+        <li><label><input type="checkbox"> Mercredi : une question rien que pour lui</label></li>
+        <li><label><input type="checkbox"> Jeudi : un sourire</label></li>
+        <li><label><input type="checkbox"> Vendredi : noter un progrès</label></li>
       </ul>
     </div>
   </div>
@@ -486,7 +508,10 @@ function bindTip(fig, target, html) {
   const svg = document.getElementById("waffle");
   for (let i = 0; i < 100; i++) {
     const fill = i < 5 ? "var(--s-exp)" : i < 10 ? "color-mix(in srgb,var(--s-exp) 40%,var(--surface))" : "var(--grid)";
-    el("circle", { cx: 35 + (i % 20) * 30, cy: 25 + Math.floor(i / 20) * 30, r: 11, style: `fill:${fill}` }, svg);
+    // pupil silhouette (head + shoulders, 28×31 units scaled to fit a 30 px cell)
+    const g = el("g", { transform: `translate(${24 + (i % 20) * 30} ${13 + Math.floor(i / 20) * 30}) scale(.78)`, style: `fill:${fill}` }, svg);
+    el("circle", { cx: 14, cy: 8, r: 7 }, g);
+    el("path", { d: "M2 31v-5c0-6 5-10 12-10s12 4 12 10v5z" }, g);
   }
 })();
 
