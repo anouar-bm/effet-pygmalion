@@ -8,6 +8,8 @@ import { existsSync } from "node:fs";
 import { spawn, execFileSync } from "node:child_process";
 
 const dir = new URL(".", import.meta.url).pathname;
+// Shared file name (video + captions): topic + author, since the mp4 is passed between teachers.
+const NAME = "effet-pygmalion-malika-kebbouch";
 const FPS = 25, PAD = 0.7, TAIL = 0.9; // must match scenes.html
 // Music bed gain (dB): -7 dB under the voice in pauses, -17 dB while it speaks (measured: voice ≈ -22.5 LUFS, music ≈ -17 LUFS).
 const MUSIC_GAP_DB = -13.2, MUSIC_SPEECH_DB = -23.2, DUCK_IN = 0.4, DUCK_OUT = 0.8;
@@ -31,7 +33,7 @@ function respell(words, captions = {}) {
   if (JSON.stringify(w) !== JSON.stringify([{ w: "de", start: 1, end: 2 }, { w: "El Kelaâ", start: 2, end: 4 }, { w: "x.", start: 4, end: 5 }])) throw new Error("respell selftest failed");
 }
 
-// Captions (../explainer.vtt): each sentence split into the fewest balanced lines of at most ~7 words / 42 chars,
+// Captions (../<NAME>.vtt): each sentence split into the fewest balanced lines of at most ~7 words / 42 chars,
 // timed from the ElevenLabs word timestamps in timings.json (written by tts.mjs).
 // A scene's optional "captions" map in narration.json shows a spoken phrase written differently (phonetic spelling → official).
 const vttTime = t => new Date(t * 1000).toISOString().slice(11, 23);
@@ -51,7 +53,7 @@ timings.forEach((s, idx) => {
   }
   speech += s.duration + TAIL;
 });
-await writeFile(`${dir}../explainer.vtt`, "WEBVTT\n\n" + cues.join("\n\n") + "\n");
+await writeFile(`${dir}../${NAME}.vtt`, "WEBVTT\n\n" + cues.join("\n\n") + "\n");
 if (narration.length !== timings.length) throw new Error("narration.json and timings.json disagree: rerun tts.mjs");
 
 const themeIdx = process.argv.indexOf("--theme");
@@ -148,7 +150,7 @@ if (previewIdx === -1) {
     mix += `[voice];[${timings.length + 1}:a]atrim=0:${total.toFixed(2)},volume=eval=frame:volume='${gain}',afade=t=in:d=1.5,afade=t=out:st=${(total - 3).toFixed(2)}:d=3[bed];[voice][bed]amix=inputs=2:normalize=0`;
   }
   mix += ",loudnorm=I=-16:TP=-1.5[a]"; // phone-friendly loudness; the raw narration sits around -22.5 LUFS
-  const out = `${dir}../explainer${suffix}.mp4`;
+  const out = `${dir}../${NAME}${suffix}.mp4`;
   execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-i", `${dir}silent${suffix}.mp4`, ...inputs, "-filter_complex", mix,
     "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-ar", "48000", "-c:a", "aac", "-b:a", "160k", out], { stdio: "inherit" });
   console.log("done:", out, total.toFixed(1) + "s");
