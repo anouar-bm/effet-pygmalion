@@ -15,16 +15,33 @@ const CHROME = process.env.CHROME || "/Applications/Brave Browser.app/Contents/M
 const timings = JSON.parse(await readFile(dir + "timings.json", "utf8"));
 const narration = JSON.parse(await readFile(dir + "narration.json", "utf8"));
 
+// Replaces each run of words spelling `from` with one word `to` spanning their times, so the cue splitter keeps it whole.
+function respell(words, captions = {}) {
+  let out = words;
+  for (const [from, to] of Object.entries(captions)) {
+    const n = from.split(" ").length;
+    const i = out.findIndex((_, k) => out.slice(k, k + n).map(x => x.w).join(" ") === from);
+    if (i < 0) throw new Error(`caption "${from}" not found in narration words`);
+    out = [...out.slice(0, i), { w: to, start: out[i].start, end: out[i + n - 1].end }, ...out.slice(i + n)];
+  }
+  return out;
+}
+{
+  const w = respell([{ w: "de", start: 1, end: 2 }, { w: "Qalaat", start: 2, end: 3 }, { w: "Al", start: 3, end: 4 }, { w: "x.", start: 4, end: 5 }], { "Qalaat Al": "El Kelaâ" });
+  if (JSON.stringify(w) !== JSON.stringify([{ w: "de", start: 1, end: 2 }, { w: "El Kelaâ", start: 2, end: 4 }, { w: "x.", start: 4, end: 5 }])) throw new Error("respell selftest failed");
+}
+
 // Captions (../explainer.vtt): each sentence split into the fewest balanced lines of at most ~7 words / 42 chars,
 // timed from the ElevenLabs word timestamps in timings.json (written by tts.mjs).
+// A scene's optional "captions" map in narration.json shows a spoken phrase written differently (phonetic spelling → official).
 const vttTime = t => new Date(t * 1000).toISOString().slice(11, 23);
 const cues = [];
 let speech = 0;
-timings.forEach(s => {
+timings.forEach((s, idx) => {
   if (!s.words?.length) throw new Error(`no word timestamps for scene ${s.id}: rerun tts.mjs`);
   speech += PAD;
   const sentences = [[]];
-  for (const w of s.words) { sentences.at(-1).push(w); if (/[.!?…]$/.test(w.w)) sentences.push([]); }
+  for (const w of respell(s.words, narration[idx]?.captions)) { sentences.at(-1).push(w); if (/[.!?…]$/.test(w.w)) sentences.push([]); }
   for (const sw of sentences.filter(x => x.length)) {
     const k = Math.max(Math.ceil(sw.map(x => x.w).join(" ").length / 42), Math.ceil(sw.length / 7));
     for (let j = 0; j < k; j++) {

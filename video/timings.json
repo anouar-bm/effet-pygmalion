@@ -1,157 +1,157 @@
 [
   {
     "id": "titre",
-    "duration": 13.978413,
+    "duration": 13.76,
     "words": [
       {
         "w": "L'effet",
-        "start": 0,
-        "end": 0.488
+        "start": 0.16,
+        "end": 0.48
       },
       {
         "w": "Pygmalion.",
-        "start": 0.58,
-        "end": 1.44
+        "start": 0.64,
+        "end": 1.32
       },
       {
         "w": "Une",
-        "start": 1.463,
-        "end": 1.649
+        "start": 2.107,
+        "end": 2.16
       },
       {
         "w": "présentation",
-        "start": 1.683,
-        "end": 2.392
+        "start": 2.32,
+        "end": 2.8
       },
       {
         "w": "réalisée",
-        "start": 2.45,
-        "end": 2.868
+        "start": 2.88,
+        "end": 3.36
       },
       {
         "w": "par",
-        "start": 2.902,
-        "end": 3.03
+        "start": 3.4,
+        "end": 3.44
       },
       {
         "w": "la",
-        "start": 3.053,
-        "end": 3.111
+        "start": 3.52,
+        "end": 3.6
       },
       {
         "w": "professeure",
-        "start": 3.158,
-        "end": 3.715
+        "start": 3.72,
+        "end": 4.16
       },
       {
         "w": "Malika",
-        "start": 3.75,
-        "end": 4.133
+        "start": 4.24,
+        "end": 4.56
       },
       {
         "w": "Kebbouch,",
-        "start": 4.191,
-        "end": 4.725
+        "start": 4.6,
+        "end": 5.24
       },
       {
         "w": "secteur",
-        "start": 5.05,
-        "end": 5.492
+        "start": 5.52,
+        "end": 5.76
       },
       {
         "w": "scolaire",
-        "start": 5.538,
-        "end": 6.153
+        "start": 5.84,
+        "end": 6.24
       },
       {
         "w": "Ouled",
-        "start": 6.223,
-        "end": 6.629
+        "start": 6.32,
+        "end": 6.56
       },
       {
         "w": "Mansour,",
-        "start": 6.687,
-        "end": 7.314
+        "start": 6.6,
+        "end": 7.28
       },
       {
         "w": "Direction",
-        "start": 7.372,
-        "end": 7.93
+        "start": 7.851,
+        "end": 7.92
       },
       {
         "w": "provinciale",
-        "start": 7.988,
-        "end": 8.766
+        "start": 8,
+        "end": 8.48
       },
       {
-        "w": "d'El",
-        "start": 9.044,
-        "end": 9.265
+        "w": "de",
+        "start": 8.56,
+        "end": 8.64
       },
       {
-        "w": "Kelaâ",
-        "start": 9.346,
-        "end": 9.752
+        "w": "Qalaat",
+        "start": 8.68,
+        "end": 8.96
       },
       {
-        "w": "des",
-        "start": 9.845,
-        "end": 10.031
+        "w": "Al",
+        "start": 9,
+        "end": 9.04
       },
       {
-        "w": "Sraghna.",
-        "start": 10.054,
-        "end": 10.577
+        "w": "Saraghna.",
+        "start": 9.08,
+        "end": 9.92
       },
       {
         "w": "Et",
-        "start": 10.855,
-        "end": 10.983
+        "start": 10.613,
+        "end": 10.64
       },
       {
         "w": "si",
-        "start": 11.018,
-        "end": 11.111
+        "start": 10.72,
+        "end": 10.8
       },
       {
         "w": "votre",
-        "start": 11.157,
-        "end": 11.413
+        "start": 10.84,
+        "end": 11.12
       },
       {
         "w": "regard",
-        "start": 11.482,
-        "end": 11.981
+        "start": 11.2,
+        "end": 11.68
       },
       {
         "w": "pouvait",
-        "start": 12.005,
-        "end": 12.272
+        "start": 11.72,
+        "end": 12.08
       },
       {
         "w": "changer",
-        "start": 12.295,
-        "end": 12.62
+        "start": 12.28,
+        "end": 12.48
       },
       {
         "w": "l'avenir",
-        "start": 12.655,
-        "end": 13.038
+        "start": 12.52,
+        "end": 12.88
       },
       {
         "w": "d'un",
-        "start": 13.096,
-        "end": 13.235
+        "start": 12.96,
+        "end": 13.12
       },
       {
         "w": "élève",
-        "start": 13.305,
-        "end": 13.665
+        "start": 13.16,
+        "end": 13.6
       },
       {
         "w": "?",
-        "start": 13.711,
-        "end": 13.978
+        "start": 13.68,
+        "end": 13.84
       }
     ]
   },
