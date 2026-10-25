@@ -9,8 +9,8 @@ import { spawn, execFileSync } from "node:child_process";
 
 const dir = new URL(".", import.meta.url).pathname;
 const FPS = 25, PAD = 0.7, TAIL = 0.9; // must match scenes.html
-// Music bed gain (dB): -7 dB under the voice in pauses, -17 dB while it speaks (measured: voice ≈ -28 LUFS, music ≈ -17 LUFS).
-const MUSIC_GAP_DB = -18.7, MUSIC_SPEECH_DB = -28.7, DUCK_IN = 0.4, DUCK_OUT = 0.8;
+// Music bed gain (dB): -7 dB under the voice in pauses, -17 dB while it speaks (measured: voice ≈ -22.5 LUFS, music ≈ -17 LUFS).
+const MUSIC_GAP_DB = -13.2, MUSIC_SPEECH_DB = -23.2, DUCK_IN = 0.4, DUCK_OUT = 0.8;
 const CHROME = process.env.CHROME || "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser";
 const timings = JSON.parse(await readFile(dir + "timings.json", "utf8"));
 const narration = JSON.parse(await readFile(dir + "narration.json", "utf8"));
@@ -130,7 +130,7 @@ if (previewIdx === -1) {
     inputs.push("-i", music);
     mix += `[voice];[${timings.length + 1}:a]atrim=0:${total.toFixed(2)},volume=eval=frame:volume='${gain}',afade=t=in:d=1.5,afade=t=out:st=${(total - 3).toFixed(2)}:d=3[bed];[voice][bed]amix=inputs=2:normalize=0`;
   }
-  mix += ",loudnorm=I=-16:TP=-1.5[a]"; // phone-friendly loudness; the raw narration sits around -28 LUFS
+  mix += ",loudnorm=I=-16:TP=-1.5[a]"; // phone-friendly loudness; the raw narration sits around -22.5 LUFS
   const out = `${dir}../explainer${suffix}.mp4`;
   execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-i", `${dir}silent${suffix}.mp4`, ...inputs, "-filter_complex", mix,
     "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-ar", "48000", "-c:a", "aac", "-b:a", "160k", out], { stdio: "inherit" });

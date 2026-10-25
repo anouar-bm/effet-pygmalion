@@ -1,6 +1,6 @@
 // Generates one narration mp3 per scene with ElevenLabs (with character timestamps), then writes timings.json:
 // [{ id, duration, words: [{ w, start, end }] }]. Word times drive exact captions and let scenes cue on words.
-// usage: node tts.mjs <voice_id>        env: ELEVENLABS_API_KEY, TTS_LANG (default fr)
+// usage: node tts.mjs <voice_id>        uses the authenticated `elevenlabs` CLI; env: TTS_LANG (default fr)
 //        node tts.mjs --selftest        checks the word grouping offline
 // Cached: an existing audio/<id>.mp3 + audio/<id>.json is reused; delete both to regenerate a scene.
 import { readFile, writeFile, mkdir } from "node:fs/promises";
@@ -32,8 +32,6 @@ if (process.argv[2] === "--selftest") {
 }
 
 const dir = new URL(".", import.meta.url).pathname;
-const key = process.env.ELEVENLABS_API_KEY;
-if (!key) throw new Error("ELEVENLABS_API_KEY missing");
 const voice = process.argv[2];
 if (!voice) throw new Error("usage: node tts.mjs <voice_id>");
 
@@ -44,14 +42,12 @@ const timings = [];
 for (const s of scenes) {
   const mp3 = `${dir}audio/${s.id}.mp3`, align = `${dir}audio/${s.id}.json`;
   if (!existsSync(mp3) || !existsSync(align)) {
-    const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}/with-timestamps?output_format=mp3_44100_128`, {
-      method: "POST",
-      headers: { "xi-api-key": key, "content-type": "application/json" },
-      body: JSON.stringify({ text: s.text, model_id: "eleven_multilingual_v2", language_code: process.env.TTS_LANG || "fr",
-        voice_settings: { stability: 0.5, similarity_boost: 0.75 } }),
-    });
-    if (!res.ok) throw new Error(`${s.id}: ${res.status} ${await res.text()}`);
-    const { audio_base64, alignment } = await res.json();
+    const params = { voice_id: voice, output_format: "mp3_44100_128", text: s.text, model_id: "eleven_multilingual_v2",
+      language_code: process.env.TTS_LANG || "fr", voice_settings: { stability: 0.5, similarity_boost: 0.75 } };
+    const res = JSON.parse(execFileSync("elevenlabs", ["text-to-speech", "convert_with_timestamps", "--format", "json",
+      "--params", JSON.stringify(params)], { maxBuffer: 64 << 20 }).toString());
+    if (res.error) throw new Error(`${s.id}: ${res.error.message}`);
+    const { audio_base64, alignment } = res;
     if (!audio_base64 || !alignment) throw new Error(`${s.id}: response without audio or alignment`);
     await writeFile(mp3, Buffer.from(audio_base64, "base64"));
     await writeFile(align, JSON.stringify(alignment));
